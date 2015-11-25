@@ -7,14 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F51B7631C05543500E64583 /* BroadcastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F51B7621C05543500E64583 /* BroadcastViewController.m */; settings = {ASSET_TAGS = (); }; };
+		5F51B7651C05679300E64583 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F51B7641C05679300E64583 /* MapKit.framework */; };
+		5F51B76B1C057B0500E64583 /* SyracuseNY.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5F51B76A1C057B0500E64583 /* SyracuseNY.gpx */; settings = {ASSET_TAGS = (); }; };
+		5F876C7F1C0597BB0069A063 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F876C7E1C0597BB0069A063 /* CoreGraphics.framework */; };
+		5F876C861C05A4820069A063 /* model in Resources */ = {isa = PBXBuildFile; fileRef = 5F876C851C05A4820069A063 /* model */; settings = {ASSET_TAGS = (); }; };
+		5F876C8B1C05A58C0069A063 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F876C8A1C05A58C0069A063 /* Model.m */; settings = {ASSET_TAGS = (); }; };
+		5F876C8E1C05A5E00069A063 /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F876C8D1C05A5E00069A063 /* Annotation.m */; settings = {ASSET_TAGS = (); }; };
 		5FB4347E1BFEB183005B1ED5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4347D1BFEB183005B1ED5 /* main.m */; };
 		5FB434811BFEB183005B1ED5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB434801BFEB183005B1ED5 /* AppDelegate.m */; };
-		5FB434841BFEB183005B1ED5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB434831BFEB183005B1ED5 /* ViewController.m */; };
 		5FB434871BFEB183005B1ED5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FB434851BFEB183005B1ED5 /* Main.storyboard */; };
 		5FB434891BFEB183005B1ED5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FB434881BFEB183005B1ED5 /* Assets.xcassets */; };
 		5FB4348C1BFEB183005B1ED5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FB4348A1BFEB183005B1ED5 /* LaunchScreen.storyboard */; };
 		5FB434971BFEB184005B1ED5 /* StaySafeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB434961BFEB184005B1ED5 /* StaySafeTests.m */; };
 		5FB434A21BFEB184005B1ED5 /* StaySafeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB434A11BFEB184005B1ED5 /* StaySafeUITests.m */; };
+		5FB434B11BFEBAA3005B1ED5 /* IconPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB434B01BFEBAA3005B1ED5 /* IconPageViewController.m */; settings = {ASSET_TAGS = (); }; };
+		5FB434B31BFEC4A3005B1ED5 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 5FB434B21BFEC4A3005B1ED5 /* images */; settings = {ASSET_TAGS = (); }; };
+		5FDFA6331C058B2400DE1DB6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDFA6321C058B2400DE1DB6 /* Foundation.framework */; };
+		5FDFA6351C058B2C00DE1DB6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDFA6341C058B2C00DE1DB6 /* CoreLocation.framework */; };
+		5FDFA6371C058CD100DE1DB6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDFA6361C058CD100DE1DB6 /* UIKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,12 +46,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F51B7611C05543500E64583 /* BroadcastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BroadcastViewController.h; sourceTree = "<group>"; };
+		5F51B7621C05543500E64583 /* BroadcastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BroadcastViewController.m; sourceTree = "<group>"; };
+		5F51B7641C05679300E64583 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		5F51B76A1C057B0500E64583 /* SyracuseNY.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SyracuseNY.gpx; sourceTree = "<group>"; };
+		5F876C7E1C0597BB0069A063 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5F876C851C05A4820069A063 /* model */ = {isa = PBXFileReference; lastKnownFileType = folder; path = model; sourceTree = "<group>"; };
+		5F876C891C05A58C0069A063 /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
+		5F876C8A1C05A58C0069A063 /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
+		5F876C8C1C05A5E00069A063 /* Annotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Annotation.h; sourceTree = "<group>"; };
+		5F876C8D1C05A5E00069A063 /* Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Annotation.m; sourceTree = "<group>"; };
 		5FB434791BFEB183005B1ED5 /* StaySafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StaySafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FB4347D1BFEB183005B1ED5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5FB4347F1BFEB183005B1ED5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5FB434801BFEB183005B1ED5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5FB434821BFEB183005B1ED5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5FB434831BFEB183005B1ED5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5FB434861BFEB183005B1ED5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5FB434881BFEB183005B1ED5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5FB4348B1BFEB183005B1ED5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +70,12 @@
 		5FB4349D1BFEB184005B1ED5 /* StaySafeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StaySafeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FB434A11BFEB184005B1ED5 /* StaySafeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StaySafeUITests.m; sourceTree = "<group>"; };
 		5FB434A31BFEB184005B1ED5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FB434AF1BFEBAA3005B1ED5 /* IconPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconPageViewController.h; sourceTree = "<group>"; };
+		5FB434B01BFEBAA3005B1ED5 /* IconPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconPageViewController.m; sourceTree = "<group>"; };
+		5FB434B21BFEC4A3005B1ED5 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
+		5FDFA6321C058B2400DE1DB6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5FDFA6341C058B2C00DE1DB6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		5FDFA6361C058CD100DE1DB6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +83,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F876C7F1C0597BB0069A063 /* CoreGraphics.framework in Frameworks */,
+				5FDFA6371C058CD100DE1DB6 /* UIKit.framework in Frameworks */,
+				5FDFA6351C058B2C00DE1DB6 /* CoreLocation.framework in Frameworks */,
+				5FDFA6331C058B2400DE1DB6 /* Foundation.framework in Frameworks */,
+				5F51B7651C05679300E64583 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +111,11 @@
 		5FB434701BFEB183005B1ED5 = {
 			isa = PBXGroup;
 			children = (
+				5F876C7E1C0597BB0069A063 /* CoreGraphics.framework */,
+				5FDFA6361C058CD100DE1DB6 /* UIKit.framework */,
+				5FDFA6341C058B2C00DE1DB6 /* CoreLocation.framework */,
+				5FDFA6321C058B2400DE1DB6 /* Foundation.framework */,
+				5F51B7641C05679300E64583 /* MapKit.framework */,
 				5FB4347B1BFEB183005B1ED5 /* StaySafe */,
 				5FB434951BFEB184005B1ED5 /* StaySafeTests */,
 				5FB434A01BFEB184005B1ED5 /* StaySafeUITests */,
@@ -101,15 +136,23 @@
 		5FB4347B1BFEB183005B1ED5 /* StaySafe */ = {
 			isa = PBXGroup;
 			children = (
+				5F876C851C05A4820069A063 /* model */,
+				5F51B76A1C057B0500E64583 /* SyracuseNY.gpx */,
 				5FB4347F1BFEB183005B1ED5 /* AppDelegate.h */,
 				5FB434801BFEB183005B1ED5 /* AppDelegate.m */,
-				5FB434821BFEB183005B1ED5 /* ViewController.h */,
-				5FB434831BFEB183005B1ED5 /* ViewController.m */,
 				5FB434851BFEB183005B1ED5 /* Main.storyboard */,
 				5FB434881BFEB183005B1ED5 /* Assets.xcassets */,
 				5FB4348A1BFEB183005B1ED5 /* LaunchScreen.storyboard */,
 				5FB4348D1BFEB183005B1ED5 /* Info.plist */,
 				5FB4347C1BFEB183005B1ED5 /* Supporting Files */,
+				5FB434AF1BFEBAA3005B1ED5 /* IconPageViewController.h */,
+				5FB434B01BFEBAA3005B1ED5 /* IconPageViewController.m */,
+				5F51B7611C05543500E64583 /* BroadcastViewController.h */,
+				5F51B7621C05543500E64583 /* BroadcastViewController.m */,
+				5F876C891C05A58C0069A063 /* Model.h */,
+				5F876C8A1C05A58C0069A063 /* Model.m */,
+				5F876C8C1C05A5E00069A063 /* Annotation.h */,
+				5F876C8D1C05A5E00069A063 /* Annotation.m */,
 			);
 			path = StaySafe;
 			sourceTree = "<group>";
@@ -117,6 +160,7 @@
 		5FB4347C1BFEB183005B1ED5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5FB434B21BFEC4A3005B1ED5 /* images */,
 				5FB4347D1BFEB183005B1ED5 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -243,7 +287,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F876C861C05A4820069A063 /* model in Resources */,
+				5FB434B31BFEC4A3005B1ED5 /* images in Resources */,
 				5FB4348C1BFEB183005B1ED5 /* LaunchScreen.storyboard in Resources */,
+				5F51B76B1C057B0500E64583 /* SyracuseNY.gpx in Resources */,
 				5FB434891BFEB183005B1ED5 /* Assets.xcassets in Resources */,
 				5FB434871BFEB183005B1ED5 /* Main.storyboard in Resources */,
 			);
@@ -270,9 +317,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FB434841BFEB183005B1ED5 /* ViewController.m in Sources */,
+				5F876C8E1C05A5E00069A063 /* Annotation.m in Sources */,
+				5FB434B11BFEBAA3005B1ED5 /* IconPageViewController.m in Sources */,
+				5F51B7631C05543500E64583 /* BroadcastViewController.m in Sources */,
 				5FB434811BFEB183005B1ED5 /* AppDelegate.m in Sources */,
 				5FB4347E1BFEB183005B1ED5 /* main.m in Sources */,
+				5F876C8B1C05A58C0069A063 /* Model.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +548,7 @@
 				5FB434A81BFEB184005B1ED5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5FB434A91BFEB184005B1ED5 /* Build configuration list for PBXNativeTarget "StaySafeTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +557,7 @@
 				5FB434AB1BFEB184005B1ED5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5FB434AC1BFEB184005B1ED5 /* Build configuration list for PBXNativeTarget "StaySafeUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +566,7 @@
 				5FB434AE1BFEB184005B1ED5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
