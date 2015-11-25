@@ -7,7 +7,6 @@
 //
 
 #import "BroadcastViewController.h"
-#import "Annotation.h"
 #import <MapKit/MapKit.h>
 @import CoreLocation;
 
@@ -25,7 +24,7 @@ double latitude, longitude;
 #define SU_LATITUDE 43.0469444444
 #define SU_LONGITUDE -76.2777777777
 //default span for zoom
-#define THE_SPAN 0.02f;
+#define THE_SPAN 0.05f;
 
 
 
@@ -39,9 +38,6 @@ double latitude, longitude;
     
     //load gps data
     [self loadGpsParams];
-    
-    //adding the annotation
-    [self addAnnotation];
     
 }
 
@@ -75,37 +71,6 @@ double latitude, longitude;
         //        }
         [self.mgr startUpdatingLocation ];
     }
-}
-
--(void) addAnnotation{
-    //Annotation
-    
-    //Create the location array for storing multiple annotations
-    NSMutableArray* nearbyUsersLocation = [[NSMutableArray alloc] init];
-    CLLocationCoordinate2D location;
-    Annotation* nearbyUsersAnnotation;
-    
-    //setting annotation for nearby user 1
-    nearbyUsersAnnotation = [[Annotation alloc]init];
-    location.latitude = 43.0377;
-    location.longitude = -76.1340;
-    nearbyUsersAnnotation.coordinate = location;
-    nearbyUsersAnnotation.title = @"Mark";
-    nearbyUsersAnnotation.subtitle = @"Mark's description";
-    [nearbyUsersLocation addObject:nearbyUsersAnnotation];
-    
-    //setting annotation for nearby user 2
-    nearbyUsersAnnotation = [[Annotation alloc]init];
-    location.latitude = 43.0412;
-    location.longitude = -76.1195;
-    nearbyUsersAnnotation.coordinate = location;
-    nearbyUsersAnnotation.title = @"Jersey";
-    nearbyUsersAnnotation.subtitle = @"Jersey's description";
-    [nearbyUsersLocation addObject:nearbyUsersAnnotation];
-    
-    //adding the set  annotations to Mapview
-    [self.broadcastMapView addAnnotations:nearbyUsersLocation];
-
 }
 
 // CLLocationManagerDelegate method that receives location updates
