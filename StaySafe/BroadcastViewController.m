@@ -9,21 +9,21 @@
 #import "BroadcastViewController.h"
 #import "Annotation.h"
 #import <MapKit/MapKit.h>
+#import "model/RepositoryModel.h"
 @import CoreLocation;
 
 
 @interface BroadcastViewController ()
 @property (weak, nonatomic) IBOutlet MKMapView *broadcastMapView;
 @property (nonatomic , strong) CLLocationManager *mgr;
+@property(nonatomic,weak) RepositoryModel *repository;
 @end
 
 @implementation BroadcastViewController
 
 double latitude, longitude;
 
-//default coordinates
-#define SU_LATITUDE 43.0469444444
-#define SU_LONGITUDE -76.2777777777
+
 //default span for zoom
 #define THE_SPAN 0.02f;
 
@@ -45,11 +45,15 @@ double latitude, longitude;
     
 }
 
+//set by IconPageViewcontroller in order to have a single repository instance
+- (void) setRepository:(RepositoryModel *)repository{
+    _repository = repository;
+}
 
 -(void) loadDefault{
     //default latitude and longitude - incase GPS is not working
-    latitude = SU_LATITUDE;
-    longitude = SU_LONGITUDE;
+    latitude = [self.repository defaultLatitude];
+    longitude = [self.repository defaultLongitude];
 }
 
 -(void) loadGpsParams{
@@ -117,6 +121,7 @@ double latitude, longitude;
     CLLocation* location = [locations lastObject];
     NSLog(@"latitude %+.6f, longitude %+.6f\n",location.coordinate.latitude, location.coordinate.longitude);
     
+   
     latitude = location.coordinate.latitude;
     longitude = location.coordinate.longitude;
     

@@ -12,7 +12,6 @@
 		5F51B76B1C057B0500E64583 /* SyracuseNY.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5F51B76A1C057B0500E64583 /* SyracuseNY.gpx */; settings = {ASSET_TAGS = (); }; };
 		5F876C7F1C0597BB0069A063 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F876C7E1C0597BB0069A063 /* CoreGraphics.framework */; };
 		5F876C861C05A4820069A063 /* model in Resources */ = {isa = PBXBuildFile; fileRef = 5F876C851C05A4820069A063 /* model */; settings = {ASSET_TAGS = (); }; };
-		5F876C8B1C05A58C0069A063 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F876C8A1C05A58C0069A063 /* Model.m */; settings = {ASSET_TAGS = (); }; };
 		5F876C8E1C05A5E00069A063 /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F876C8D1C05A5E00069A063 /* Annotation.m */; settings = {ASSET_TAGS = (); }; };
 		5FB4347E1BFEB183005B1ED5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4347D1BFEB183005B1ED5 /* main.m */; };
 		5FB434811BFEB183005B1ED5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB434801BFEB183005B1ED5 /* AppDelegate.m */; };
@@ -26,6 +25,8 @@
 		5FDFA6331C058B2400DE1DB6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDFA6321C058B2400DE1DB6 /* Foundation.framework */; };
 		5FDFA6351C058B2C00DE1DB6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDFA6341C058B2C00DE1DB6 /* CoreLocation.framework */; };
 		5FDFA6371C058CD100DE1DB6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDFA6361C058CD100DE1DB6 /* UIKit.framework */; };
+		5FF53BDA1C0AFF060088A54B /* InitModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF53BD91C0AFF060088A54B /* InitModel.m */; settings = {ASSET_TAGS = (); }; };
+		5FF53BE01C0B151E0088A54B /* RepositoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF53BDF1C0B151E0088A54B /* RepositoryModel.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,8 +53,6 @@
 		5F51B76A1C057B0500E64583 /* SyracuseNY.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SyracuseNY.gpx; sourceTree = "<group>"; };
 		5F876C7E1C0597BB0069A063 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5F876C851C05A4820069A063 /* model */ = {isa = PBXFileReference; lastKnownFileType = folder; path = model; sourceTree = "<group>"; };
-		5F876C891C05A58C0069A063 /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
-		5F876C8A1C05A58C0069A063 /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
 		5F876C8C1C05A5E00069A063 /* Annotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Annotation.h; sourceTree = "<group>"; };
 		5F876C8D1C05A5E00069A063 /* Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Annotation.m; sourceTree = "<group>"; };
 		5FB434791BFEB183005B1ED5 /* StaySafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StaySafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +75,10 @@
 		5FDFA6321C058B2400DE1DB6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5FDFA6341C058B2C00DE1DB6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5FDFA6361C058CD100DE1DB6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5FF53BD81C0AFF060088A54B /* InitModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InitModel.h; path = StaySafe/model/InitModel.h; sourceTree = "<group>"; };
+		5FF53BD91C0AFF060088A54B /* InitModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InitModel.m; path = StaySafe/model/InitModel.m; sourceTree = "<group>"; };
+		5FF53BDE1C0B151E0088A54B /* RepositoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RepositoryModel.h; path = model/RepositoryModel.h; sourceTree = "<group>"; };
+		5FF53BDF1C0B151E0088A54B /* RepositoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RepositoryModel.m; path = model/RepositoryModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 		5FB434701BFEB183005B1ED5 = {
 			isa = PBXGroup;
 			children = (
+				5FF53BD81C0AFF060088A54B /* InitModel.h */,
+				5FF53BD91C0AFF060088A54B /* InitModel.m */,
 				5F876C7E1C0597BB0069A063 /* CoreGraphics.framework */,
 				5FDFA6361C058CD100DE1DB6 /* UIKit.framework */,
 				5FDFA6341C058B2C00DE1DB6 /* CoreLocation.framework */,
@@ -149,10 +154,10 @@
 				5FB434B01BFEBAA3005B1ED5 /* IconPageViewController.m */,
 				5F51B7611C05543500E64583 /* BroadcastViewController.h */,
 				5F51B7621C05543500E64583 /* BroadcastViewController.m */,
-				5F876C891C05A58C0069A063 /* Model.h */,
-				5F876C8A1C05A58C0069A063 /* Model.m */,
 				5F876C8C1C05A5E00069A063 /* Annotation.h */,
 				5F876C8D1C05A5E00069A063 /* Annotation.m */,
+				5FF53BDE1C0B151E0088A54B /* RepositoryModel.h */,
+				5FF53BDF1C0B151E0088A54B /* RepositoryModel.m */,
 			);
 			path = StaySafe;
 			sourceTree = "<group>";
@@ -321,8 +326,9 @@
 				5FB434B11BFEBAA3005B1ED5 /* IconPageViewController.m in Sources */,
 				5F51B7631C05543500E64583 /* BroadcastViewController.m in Sources */,
 				5FB434811BFEB183005B1ED5 /* AppDelegate.m in Sources */,
+				5FF53BE01C0B151E0088A54B /* RepositoryModel.m in Sources */,
 				5FB4347E1BFEB183005B1ED5 /* main.m in Sources */,
-				5F876C8B1C05A58C0069A063 /* Model.m in Sources */,
+				5FF53BDA1C0AFF060088A54B /* InitModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
