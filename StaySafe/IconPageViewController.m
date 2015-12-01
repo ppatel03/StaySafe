@@ -42,6 +42,8 @@ NSString* const imagePath = @"../images/";
 
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
+// This function can also be called explicitly
+//[self performSegueWithIdentifier:@"myIdentifier" sender:self];
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

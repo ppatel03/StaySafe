@@ -43,6 +43,9 @@ double latitude, longitude;
     //adding the annotation
     [self addAnnotation];
     
+    //make a REST call
+    [self makeRestAPICall];
+    
 }
 
 //set by IconPageViewcontroller in order to have a single repository instance
@@ -147,6 +150,32 @@ double latitude, longitude;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) makeRestAPICall
+{
+    NSString *post = [NSString stringWithFormat:@"{\"query\":\"*\"}"];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    
+    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:@"https://api-us.clusterpoint.com/102990/user_detail/_search.json"]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setHTTPBody:postData];
+    NSString* plainString = @"pp231189@gmail.com:123ABCabc$";
+    NSData *plainData = [plainString dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *base64String = [plainData base64EncodedStringWithOptions:0];
+    NSString* headerValue = [@"Basic " stringByAppendingString:base64String];
+    [request addValue:headerValue forHTTPHeaderField:@"Authorization"];
+    
+    
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+        NSLog(@"requestReply: %@", requestReply);
+    }] resume];
 }
 
 /*
