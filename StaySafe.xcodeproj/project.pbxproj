@@ -13,6 +13,12 @@
 		5F876C7F1C0597BB0069A063 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F876C7E1C0597BB0069A063 /* CoreGraphics.framework */; };
 		5F876C861C05A4820069A063 /* model in Resources */ = {isa = PBXBuildFile; fileRef = 5F876C851C05A4820069A063 /* model */; settings = {ASSET_TAGS = (); }; };
 		5F876C8E1C05A5E00069A063 /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F876C8D1C05A5E00069A063 /* Annotation.m */; settings = {ASSET_TAGS = (); }; };
+		5F98D6A81C0E6BAF00FA770C /* RESTApiDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F98D6A71C0E6BAF00FA770C /* RESTApiDAO.m */; settings = {ASSET_TAGS = (); }; };
+		5F98D6AE1C0E727C00FA770C /* JSONQueryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F98D6AD1C0E727C00FA770C /* JSONQueryModel.m */; settings = {ASSET_TAGS = (); }; };
+		5F98D6B01C0E761900FA770C /* constants in Resources */ = {isa = PBXBuildFile; fileRef = 5F98D6AF1C0E761900FA770C /* constants */; settings = {ASSET_TAGS = (); }; };
+		5F98D6B31C0E762D00FA770C /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F98D6B21C0E762D00FA770C /* Constants.m */; settings = {ASSET_TAGS = (); }; };
+		5F98D6B61C0E956A00FA770C /* UserDetailDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F98D6B51C0E956A00FA770C /* UserDetailDAO.m */; settings = {ASSET_TAGS = (); }; };
+		5F98D6B91C0E981200FA770C /* UserDetailVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F98D6B81C0E981200FA770C /* UserDetailVO.m */; settings = {ASSET_TAGS = (); }; };
 		5FB4347E1BFEB183005B1ED5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4347D1BFEB183005B1ED5 /* main.m */; };
 		5FB434811BFEB183005B1ED5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB434801BFEB183005B1ED5 /* AppDelegate.m */; };
 		5FB434871BFEB183005B1ED5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FB434851BFEB183005B1ED5 /* Main.storyboard */; };
@@ -55,6 +61,17 @@
 		5F876C851C05A4820069A063 /* model */ = {isa = PBXFileReference; lastKnownFileType = folder; path = model; sourceTree = "<group>"; };
 		5F876C8C1C05A5E00069A063 /* Annotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Annotation.h; sourceTree = "<group>"; };
 		5F876C8D1C05A5E00069A063 /* Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Annotation.m; sourceTree = "<group>"; };
+		5F98D6A61C0E6BAF00FA770C /* RESTApiDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RESTApiDAO.h; path = model/dao/RESTApiDAO.h; sourceTree = "<group>"; };
+		5F98D6A71C0E6BAF00FA770C /* RESTApiDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RESTApiDAO.m; path = model/dao/RESTApiDAO.m; sourceTree = "<group>"; };
+		5F98D6AC1C0E727C00FA770C /* JSONQueryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONQueryModel.h; path = model/JSONQueryModel.h; sourceTree = "<group>"; };
+		5F98D6AD1C0E727C00FA770C /* JSONQueryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONQueryModel.m; path = model/JSONQueryModel.m; sourceTree = "<group>"; };
+		5F98D6AF1C0E761900FA770C /* constants */ = {isa = PBXFileReference; lastKnownFileType = folder; path = constants; sourceTree = "<group>"; };
+		5F98D6B11C0E762D00FA770C /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = constants/Constants.h; sourceTree = "<group>"; };
+		5F98D6B21C0E762D00FA770C /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = constants/Constants.m; sourceTree = "<group>"; };
+		5F98D6B41C0E956A00FA770C /* UserDetailDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserDetailDAO.h; path = model/dao/UserDetailDAO.h; sourceTree = "<group>"; };
+		5F98D6B51C0E956A00FA770C /* UserDetailDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserDetailDAO.m; path = model/dao/UserDetailDAO.m; sourceTree = "<group>"; };
+		5F98D6B71C0E981200FA770C /* UserDetailVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserDetailVO.h; path = model/vo/UserDetailVO.h; sourceTree = "<group>"; };
+		5F98D6B81C0E981200FA770C /* UserDetailVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserDetailVO.m; path = model/vo/UserDetailVO.m; sourceTree = "<group>"; };
 		5FB434791BFEB183005B1ED5 /* StaySafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StaySafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FB4347D1BFEB183005B1ED5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5FB4347F1BFEB183005B1ED5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -141,6 +158,7 @@
 		5FB4347B1BFEB183005B1ED5 /* StaySafe */ = {
 			isa = PBXGroup;
 			children = (
+				5F98D6AF1C0E761900FA770C /* constants */,
 				5F876C851C05A4820069A063 /* model */,
 				5F51B76A1C057B0500E64583 /* SyracuseNY.gpx */,
 				5FB4347F1BFEB183005B1ED5 /* AppDelegate.h */,
@@ -157,7 +175,17 @@
 				5F876C8C1C05A5E00069A063 /* Annotation.h */,
 				5F876C8D1C05A5E00069A063 /* Annotation.m */,
 				5FF53BDE1C0B151E0088A54B /* RepositoryModel.h */,
+				5F98D6A71C0E6BAF00FA770C /* RESTApiDAO.m */,
+				5F98D6AC1C0E727C00FA770C /* JSONQueryModel.h */,
 				5FF53BDF1C0B151E0088A54B /* RepositoryModel.m */,
+				5F98D6A61C0E6BAF00FA770C /* RESTApiDAO.h */,
+				5F98D6AD1C0E727C00FA770C /* JSONQueryModel.m */,
+				5F98D6B11C0E762D00FA770C /* Constants.h */,
+				5F98D6B21C0E762D00FA770C /* Constants.m */,
+				5F98D6B41C0E956A00FA770C /* UserDetailDAO.h */,
+				5F98D6B51C0E956A00FA770C /* UserDetailDAO.m */,
+				5F98D6B71C0E981200FA770C /* UserDetailVO.h */,
+				5F98D6B81C0E981200FA770C /* UserDetailVO.m */,
 			);
 			path = StaySafe;
 			sourceTree = "<group>";
@@ -294,6 +322,7 @@
 			files = (
 				5F876C861C05A4820069A063 /* model in Resources */,
 				5FB434B31BFEC4A3005B1ED5 /* images in Resources */,
+				5F98D6B01C0E761900FA770C /* constants in Resources */,
 				5FB4348C1BFEB183005B1ED5 /* LaunchScreen.storyboard in Resources */,
 				5F51B76B1C057B0500E64583 /* SyracuseNY.gpx in Resources */,
 				5FB434891BFEB183005B1ED5 /* Assets.xcassets in Resources */,
@@ -323,12 +352,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F876C8E1C05A5E00069A063 /* Annotation.m in Sources */,
+				5F98D6B61C0E956A00FA770C /* UserDetailDAO.m in Sources */,
 				5FB434B11BFEBAA3005B1ED5 /* IconPageViewController.m in Sources */,
 				5F51B7631C05543500E64583 /* BroadcastViewController.m in Sources */,
+				5F98D6A81C0E6BAF00FA770C /* RESTApiDAO.m in Sources */,
 				5FB434811BFEB183005B1ED5 /* AppDelegate.m in Sources */,
+				5F98D6B31C0E762D00FA770C /* Constants.m in Sources */,
 				5FF53BE01C0B151E0088A54B /* RepositoryModel.m in Sources */,
+				5F98D6B91C0E981200FA770C /* UserDetailVO.m in Sources */,
 				5FB4347E1BFEB183005B1ED5 /* main.m in Sources */,
 				5FF53BDA1C0AFF060088A54B /* InitModel.m in Sources */,
+				5F98D6AE1C0E727C00FA770C /* JSONQueryModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface InitModel : NSObject
+//default coordinates
+#define SU_LATITUDE 43.0469444444
+#define SU_LONGITUDE -76.2777777777
+
 //gets the default latitude
 -(double) getDefaultLatitude;
 

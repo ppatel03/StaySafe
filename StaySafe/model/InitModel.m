@@ -15,9 +15,6 @@
 
 @implementation InitModel
 
-//default coordinates
-#define SU_LATITUDE 43.0469444444
-#define SU_LONGITUDE -76.2777777777
 
 //default constructor
 - (id) init

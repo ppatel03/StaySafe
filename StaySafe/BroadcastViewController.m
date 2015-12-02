@@ -7,16 +7,12 @@
 //
 
 #import "BroadcastViewController.h"
-#import "Annotation.h"
-#import <MapKit/MapKit.h>
-#import "model/RepositoryModel.h"
+
 @import CoreLocation;
 
 
 @interface BroadcastViewController ()
-@property (weak, nonatomic) IBOutlet MKMapView *broadcastMapView;
-@property (nonatomic , strong) CLLocationManager *mgr;
-@property(nonatomic,weak) RepositoryModel *repository;
+
 @end
 
 @implementation BroadcastViewController
@@ -43,8 +39,8 @@ double latitude, longitude;
     //adding the annotation
     [self addAnnotation];
     
-    //make a REST call
-    [self makeRestAPICall];
+    //call the repository to retreive the user details
+    [self.repository getAllUserDetails];
     
 }
 

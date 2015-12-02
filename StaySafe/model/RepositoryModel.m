@@ -13,12 +13,9 @@
 // Refer https://msdn.microsoft.com/en-us/library/ff649690.aspx for Repository pattern
 
 #import "RepositoryModel.h"
-#import "InitModel.h"
+
 
 @interface RepositoryModel ()
-@property (strong,nonatomic) InitModel* defaults;
-
-
 @end
 
 @implementation RepositoryModel
@@ -37,11 +34,14 @@
     return self;
 }
 
+/* =========== LOGIC of OVERRIDDING default auto-generated getter STARTS HERE =============== */
+
 // We override the default auto-generated getter for property model (which just
 // returns the current value of ivar _model;), so we can do LAZY INSTANTIATION
 // of our model object of class Model; doing lazy instantiation in getters
 // is good practice, as objects won't be created until they are needed).  Note
 // that we must use ivar _model here (using self.model would cause recursive call!)
+//1. defaults
 - (InitModel *) defaults
 {
     if (!_defaults)
@@ -50,9 +50,35 @@
     return _defaults;
 }
 
+
+
+//3. userDetailDAO
+- (UserDetailDAO *) userDetailDAO
+{
+    if (!_userDetailDAO)
+        _userDetailDAO = [[UserDetailDAO alloc] init];
+    
+    return _userDetailDAO;
+}
+
+/* =========== LOGIC of OVERRIDDING default auto-generated getter ENDS HERE =============== */
+
+
+//stores default latitude and longitude
 -(void) storeDefaultLatitudeAndLongitude{
     self.defaultLatitude = self.defaults.getDefaultLatitude;
     self.defaultLongitude = self.defaults.getDefaultLongitude;
+}
+
+//retreives all the users details from the database
+-(NSMutableDictionary*) getAllUserDetails{
+    // Create an empty mutable dictionary
+    NSMutableDictionary *users = [NSMutableDictionary dictionary];
+    
+    //calling the REST API layer
+    [self.userDetailDAO getAllUserDetails];
+    
+    return users;
 }
 
 

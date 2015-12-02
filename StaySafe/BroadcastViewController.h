@@ -7,9 +7,18 @@
 //
 #import <UIKit/UIKit.h>
 #import "model/RepositoryModel.h"
+#import "Annotation.h"
+#import <MapKit/MapKit.h>
+#import "model/RepositoryModel.h"
+
 @import CoreLocation;
 
 @interface BroadcastViewController: UIViewController<CLLocationManagerDelegate>
 //set by IconPageViewcontroller in order to have a single repository instance
 - (void) setRepository:(RepositoryModel *)repository;
+
+@property (weak, nonatomic) IBOutlet MKMapView *broadcastMapView;
+@property (nonatomic , strong) CLLocationManager *mgr;
+@property(nonatomic,weak) RepositoryModel *repository;
+
 @end

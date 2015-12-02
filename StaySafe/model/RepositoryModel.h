@@ -13,8 +13,18 @@
 // Refer https://msdn.microsoft.com/en-us/library/ff649690.aspx for Repository pattern
 
 #import <Foundation/Foundation.h>
+#include "InitModel.h"
+#include "UserDetailDAO.h"
+
 
 @interface RepositoryModel : NSObject
+
+//loading the default parameters
+@property (strong,nonatomic) InitModel* defaults;
+
+//HAS-A relationship with UserDetailDAO to load and process user data
+@property (strong,nonatomic) UserDetailDAO* userDetailDAO;
+
 
 //default getters and setters
 @property  double defaultLatitude;
@@ -22,5 +32,8 @@
 
 //stores default latitude and longitude
 -(void) storeDefaultLatitudeAndLongitude;
+
+//retreives all the users details from the database
+-(NSMutableDictionary*) getAllUserDetails;
 
 @end
