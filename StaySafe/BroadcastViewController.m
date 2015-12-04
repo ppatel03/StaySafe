@@ -42,6 +42,10 @@ double latitude, longitude;
     //call the repository to retreive the user details
     [self.repository getAllUserDetails];
     
+    //sample sms sending
+    NSString* message = @" Hey !!! This is Prashant testing his Orange Alert App. You are getting this SMS probable because of your location near to Testing device";
+    [self.repository sendSMSToUsers:self.repository.users sms:message];
+    
 }
 
 //set by IconPageViewcontroller in order to have a single repository instance
@@ -61,7 +65,7 @@ double latitude, longitude;
     {
         NSLog(@"locationServicesEnabled");
         self.mgr = [[CLLocationManager alloc] init];  // get a location manager
-        self.mgr.distanceFilter = 50.0;               // set criterion for location updating
+        self.mgr.distanceFilter = 20.0;               // set criterion for location updating
         self.mgr.desiredAccuracy = kCLLocationAccuracyBest; // set criterion for location updating
         self.mgr.delegate =  self; // establish delegate to listen for updates
         if ( [[[UIDevice currentDevice] systemVersion] doubleValue] >= 8.0 )
@@ -125,8 +129,8 @@ double latitude, longitude;
     longitude = location.coordinate.longitude;
     
     //update the new location for the user asynchronous location
-    NSString* userId = @"565d476b4780d5.55832108";
-    
+   // NSString* userId = @"678713856";
+   // [self.repository updateUserLocation:userId lat:latitude long:longitude];
     
     //create the region
     MKCoordinateRegion userRegion;

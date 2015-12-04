@@ -80,12 +80,16 @@
 }
 
 //update the user location
--(void) updateUserLocation : (UserDetailVO*) user {
-    NSString* userId = user.id;
+-(void) updateUserLocation : (NSString*) userId lat : (double)latitude long : (double) longitude{
     UserDetailVO *updatedUser = self.users[userId];
     
     if(updatedUser != nil){
+        //update the user's location only
+        updatedUser.latitude = latitude;
+        updatedUser.longitude = longitude;
+        
         //aynchronous call to update the user location
+        [self.userDetailDAO updateUserLocation:updatedUser];
         
         // update the user location in the repository
         [self.users setObject:updatedUser forKey:userId];
@@ -93,6 +97,14 @@
         NSLog(@"user not found to update the location");
     }
 }
+
+// aynchronous sending of SMSes to the list of users
+- (void) sendSMSToUsers : (NSMutableDictionary*) users sms : (NSString*) message {
+    
+    //asynchronous call to send SMS to all users one by one through REST APIs
+    [self.userDetailDAO sendSMSToUsers:users sms:message];
+}
+
 
 
 @end

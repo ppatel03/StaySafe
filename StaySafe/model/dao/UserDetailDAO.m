@@ -73,8 +73,7 @@
         if ([userDictionaryArray isKindOfClass:[NSArray class]]){
             for (NSDictionary *dictionary in userDictionaryArray) {
                 UserDetailVO *user = [[UserDetailVO alloc] init];
-                user.id = [dictionary objectForKey:@"id"];
-                user.suid = [dictionary objectForKey:@"student_id"];
+                user.suid = [dictionary objectForKey:@"id"];
                 user.name = [dictionary objectForKey:@"name"];
                 user.email = [dictionary objectForKey:@"email"];
                 user.phone = [dictionary objectForKey:@"phone"];
@@ -82,7 +81,7 @@
                 user.longitude =  [[dictionary objectForKey:@"longitude"] doubleValue];
                 
                 //Do this for all property
-                [users setObject:user forKey:user.id];
+                [users setObject:user forKey:user.suid];
             }
         }
     }
@@ -93,7 +92,28 @@
 //  asynchronous update to user location
 - (void) updateUserLocation : (UserDetailVO*) user{
     
-    NSString* query = [self.jsonModel getJSONQueryForLocationUpdate:user.id lat:user.latitude long:user.longitude];
+    //fetches the json Query required for the cluster point server
+    NSString* query = [self.jsonModel getJSONQueryForLocationUpdate:user.suid lat:user.latitude long:user.longitude];
+    
+    //call the rest api to perform asynchronous insert operation
+    [self.restAPIDAO makeRESTAPIcallToUpdaterUserLocation:query table:USER_DETAILS_DB_NAME];
+}
+
+
+// aynchronous sending of SMSes to the list of users
+- (void) sendSMSToUsers : (NSMutableDictionary*) users sms : (NSString*) message {
+    
+    //looping through the dictionary in iOS
+    for (id key in users) {
+        UserDetailVO *user = users[key];
+        
+        //fetches the json Query required for the sending sms to a phone number with message body
+        NSString* query = [self.jsonModel getQueryForSendingTextSMS:user.phone sms:message];
+        
+        //call the REST api to send sms asynchronously
+        [self.restAPIDAO makeRESTAPIcallToSendSMS:query];
+    }
+    
 }
 
 @end

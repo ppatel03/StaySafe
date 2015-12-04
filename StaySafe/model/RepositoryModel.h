@@ -41,7 +41,10 @@
 -(NSMutableDictionary*) getAllUserDetails;
 
 //update the user location
--(void) updateUserLocation : (UserDetailVO*) user ;
+-(void) updateUserLocation : (NSString*) userId lat : (double)latitude long : (double) longitude;
+
+// aynchronous sending of SMSes to the list of users
+- (void) sendSMSToUsers : (NSMutableDictionary*) users sms : (NSString*) message ;
 
 
 @end

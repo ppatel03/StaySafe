@@ -13,13 +13,17 @@
 //extern NSString *const SEARCH_QUERY_FOR_ALL_RECORDS;
 #define SEARCH_QUERY_FOR_ALL_RECORDS @"{\"query\":\"*\"}"
 
-//get JSON query to retreive all the records from the table
+//get JSON formatted query to retreive all the records from the table
 -(NSString*) getJSONQueryForFetchingAllRecords;
 
 //get the mutable dictionary of user id and its object
 -(NSMutableDictionary*) getUsersDictionaryFromJson : (NSString*) jsonString;
 
-//get the query for location update
+//get the json formatted query for location update
 -(NSString*) getJSONQueryForLocationUpdate : (NSString*) userId lat : (double) latitude long : (double) longitude;
+
+//get the  formatted query for text smses
+-(NSString*) getQueryForSendingTextSMS : (NSString*) phone  sms : (NSString*) message ;
+
 
 @end

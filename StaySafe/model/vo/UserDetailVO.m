@@ -10,7 +10,6 @@
 
 @implementation UserDetailVO
 //getters and setters generators
-@synthesize id;
 @synthesize suid;
 @synthesize name;
 @synthesize email;

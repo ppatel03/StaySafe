@@ -51,4 +51,13 @@
     return query;
 }
 
+//get the  formatted query for text smses
+-(NSString*) getQueryForSendingTextSMS : (NSString*) phone  sms : (NSString*) message {
+    NSString* query =  @"message=message_value&number=number_value";
+    query = [query stringByReplacingOccurrencesOfString:@"number_value" withString:phone];
+    query = [query stringByReplacingOccurrencesOfString:@"message_value" withString:message];
+
+    return query;
+}
+
 @end

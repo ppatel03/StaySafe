@@ -10,11 +10,10 @@
 
 @interface UserDetailVO : NSObject
 
-@property NSString* id;
 @property NSString* suid;
 @property NSString* name;
 @property NSString* email;
-@property NSNumber* phone;
+@property NSString* phone;
 @property double latitude;
 @property double longitude;
 

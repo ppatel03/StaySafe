@@ -27,4 +27,9 @@
 //  asynchronous update to user location
 - (void) updateUserLocation : (UserDetailVO*) user;
 
+
+// aynchronous sending of SMSes to the list of users
+- (void) sendSMSToUsers : (NSMutableDictionary*) users sms : (NSString*) message ;
+
+
 @end
