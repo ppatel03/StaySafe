@@ -124,6 +124,10 @@ double latitude, longitude;
     latitude = location.coordinate.latitude;
     longitude = location.coordinate.longitude;
     
+    //update the new location for the user asynchronous location
+    NSString* userId = @"565d476b4780d5.55832108";
+    
+    
     //create the region
     MKCoordinateRegion userRegion;
     //Center

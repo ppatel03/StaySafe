@@ -72,13 +72,26 @@
 
 //retreives all the users details from the database
 -(NSMutableDictionary*) getAllUserDetails{
-    // Create an empty mutable dictionary
-    NSMutableDictionary *users = [NSMutableDictionary dictionary];
     
     //calling the REST API layer
-    [self.userDetailDAO getAllUserDetails];
+    self.users = [self.userDetailDAO getAllUserDetails];
     
-    return users;
+    return self.users;
+}
+
+//update the user location
+-(void) updateUserLocation : (UserDetailVO*) user {
+    NSString* userId = user.id;
+    UserDetailVO *updatedUser = self.users[userId];
+    
+    if(updatedUser != nil){
+        //aynchronous call to update the user location
+        
+        // update the user location in the repository
+        [self.users setObject:updatedUser forKey:userId];
+    } else{
+        NSLog(@"user not found to update the location");
+    }
 }
 
 

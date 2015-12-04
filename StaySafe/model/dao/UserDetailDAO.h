@@ -10,6 +10,7 @@
 #import <Foundation/Foundation.h>
 #import "RESTApiDAO.h"
 #import "JSONQueryModel.h"
+#import "UserDetailVO.h"
 
 @interface UserDetailDAO : NSObject
 
@@ -22,5 +23,8 @@
 
 //  retrieves all the records from the user_detail database
 - (NSMutableDictionary*) getAllUserDetails ;
+
+//  asynchronous update to user location
+- (void) updateUserLocation : (UserDetailVO*) user;
 
 @end

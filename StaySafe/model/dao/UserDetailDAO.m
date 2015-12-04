@@ -12,6 +12,15 @@
 @implementation UserDetailDAO
 
 
+//default constructor
+- (id) init
+{
+    if ( self = [super init] )
+    {
+        // do nothing
+    }
+    return self;
+}
 
 
 /* =========== LOGIC of OVERRIDDING default auto-generated getter STARTS HERE =============== */
@@ -49,10 +58,42 @@
     // Create an empty mutable dictionary
     NSMutableDictionary *users = [NSMutableDictionary dictionary];
     
+    
+    NSString* query = [self.jsonModel getJSONQueryForFetchingAllRecords];
+    
     //calling the REST API layer
-    [self.restAPIDAO makeRESTAPIcallForSearch:SEARCH_QUERY_FOR_ALL_RECORDS table:USER_DETAILS_DB_NAME];
+    NSString* jsonString = [self.restAPIDAO makeRESTAPIcallForSearch:query table:USER_DETAILS_DB_NAME];
+    
+    //parse the json string into dicitonary
+    NSMutableDictionary *jsonDictionary = [self.jsonModel getUsersDictionaryFromJson:jsonString];
+    
+    //using dictionary to store user details of the form --- id : UserDetailVo
+    if ([jsonDictionary isKindOfClass:[NSMutableDictionary class]]){
+        NSArray *userDictionaryArray = jsonDictionary[@"documents"];
+        if ([userDictionaryArray isKindOfClass:[NSArray class]]){
+            for (NSDictionary *dictionary in userDictionaryArray) {
+                UserDetailVO *user = [[UserDetailVO alloc] init];
+                user.id = [dictionary objectForKey:@"id"];
+                user.suid = [dictionary objectForKey:@"student_id"];
+                user.name = [dictionary objectForKey:@"name"];
+                user.email = [dictionary objectForKey:@"email"];
+                user.phone = [dictionary objectForKey:@"phone"];
+                user.latitude =  [[dictionary objectForKey:@"latitude"] doubleValue];
+                user.longitude =  [[dictionary objectForKey:@"longitude"] doubleValue];
+                
+                //Do this for all property
+                [users setObject:user forKey:user.id];
+            }
+        }
+    }
     
     return users;
+}
+
+//  asynchronous update to user location
+- (void) updateUserLocation : (UserDetailVO*) user{
+    
+    NSString* query = [self.jsonModel getJSONQueryForLocationUpdate:user.id lat:user.latitude long:user.longitude];
 }
 
 @end

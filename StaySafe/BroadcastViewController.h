@@ -9,7 +9,7 @@
 #import "model/RepositoryModel.h"
 #import "Annotation.h"
 #import <MapKit/MapKit.h>
-#import "model/RepositoryModel.h"
+#import "UserDetailVO.h"
 
 @import CoreLocation;
 

@@ -15,6 +15,7 @@
 #import <Foundation/Foundation.h>
 #include "InitModel.h"
 #include "UserDetailDAO.h"
+#include "UserDetailVO.h"
 
 
 @interface RepositoryModel : NSObject
@@ -24,6 +25,9 @@
 
 //HAS-A relationship with UserDetailDAO to load and process user data
 @property (strong,nonatomic) UserDetailDAO* userDetailDAO;
+
+//HAS-A NSMutableDictionary of users
+@property (strong,nonatomic) NSMutableDictionary* users;
 
 
 //default getters and setters
@@ -35,5 +39,9 @@
 
 //retreives all the users details from the database
 -(NSMutableDictionary*) getAllUserDetails;
+
+//update the user location
+-(void) updateUserLocation : (UserDetailVO*) user ;
+
 
 @end

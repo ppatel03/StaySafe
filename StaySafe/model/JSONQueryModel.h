@@ -16,4 +16,10 @@
 //get JSON query to retreive all the records from the table
 -(NSString*) getJSONQueryForFetchingAllRecords;
 
+//get the mutable dictionary of user id and its object
+-(NSMutableDictionary*) getUsersDictionaryFromJson : (NSString*) jsonString;
+
+//get the query for location update
+-(NSString*) getJSONQueryForLocationUpdate : (NSString*) userId lat : (double) latitude long : (double) longitude;
+
 @end
