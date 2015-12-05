@@ -150,6 +150,21 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4NW-nu-WYt">
                                 <rect key="frame" x="0.0" y="221" width="320" height="347"/>
                             </mapView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="     Enter Alert Message" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aZf-sj-Sgx">
+                                <rect key="frame" x="68" y="105" width="184" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="zCI-rV-FXA" id="r6f-9t-9KB"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahV-71-NO9">
+                                <rect key="frame" x="119" y="159" width="83" height="30"/>
+                                <state key="normal" title="Alert Users"/>
+                                <connections>
+                                    <action selector="onClickBroadcastAlertButton:" destination="zCI-rV-FXA" eventType="touchUpInside" id="dCO-bP-A6a"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -161,7 +176,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Broadcast" id="HFC-2d-Gi6"/>
                     <connections>
+                        <outlet property="broadcastAlertButton" destination="ahV-71-NO9" id="9p1-5Y-gOm"/>
                         <outlet property="broadcastMapView" destination="4NW-nu-WYt" id="ttG-Ro-MHk"/>
+                        <outlet property="broadcastMessageText" destination="aZf-sj-Sgx" id="QVN-yO-aXU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xLn-Fb-22W" userLabel="First Responder" sceneMemberID="firstResponder"/>

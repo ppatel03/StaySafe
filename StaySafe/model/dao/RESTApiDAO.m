@@ -72,16 +72,7 @@
     
 }
 
--(NSData*) dataFromString:(NSString*) s
-{
-    NSMutableData *d = [[NSMutableData alloc] init];
-    for (int i = 0; i < [s length]; i++)
-    {
-        char c = [s characterAtIndex:i];
-        [d appendBytes:&c length:1];
-    }
-    return d;
-}
+
 
 // asynchronous sms sending to the user
 -(void) makeRESTAPIcallToSendSMS : (NSString*) query {

@@ -10,6 +10,7 @@
 #import "Annotation.h"
 #import <MapKit/MapKit.h>
 #import "UserDetailVO.h"
+#import "Constants.h"
 
 @import CoreLocation;
 
@@ -20,5 +21,7 @@
 @property (weak, nonatomic) IBOutlet MKMapView *broadcastMapView;
 @property (nonatomic , strong) CLLocationManager *mgr;
 @property(nonatomic,weak) RepositoryModel *repository;
+@property (weak, nonatomic) IBOutlet UITextField *broadcastMessageText;
+@property (weak, nonatomic) IBOutlet UIButton *broadcastAlertButton;
 
 @end

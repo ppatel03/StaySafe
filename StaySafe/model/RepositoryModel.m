@@ -20,16 +20,21 @@
 
 @implementation RepositoryModel
 
-//getters and setters generators in objective-c
+//getters and setters generators for default latitude
 @synthesize defaultLatitude;
+//getters and setters generators for default longitude
 @synthesize defaultLongitude;
+//getters and setters generators for dictionary of nearby users
+@synthesize nearbyUsers;
+
 
 //default constructor
 - (id) init
 {
     if ( self = [super init] )
     {
-        // do nothing
+        // intialize the dictionary for nearby users
+        nearbyUsers = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -78,6 +83,7 @@
     
     return self.users;
 }
+
 
 //update the user location
 -(void) updateUserLocation : (NSString*) userId lat : (double)latitude long : (double) longitude{

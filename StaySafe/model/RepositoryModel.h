@@ -29,6 +29,9 @@
 //HAS-A NSMutableDictionary of users
 @property (strong,nonatomic) NSMutableDictionary* users;
 
+//HAS-A NSMutableDictionary of nearby users
+@property (strong,nonatomic) NSMutableDictionary* nearbyUsers;
+
 
 //default getters and setters
 @property  double defaultLatitude;

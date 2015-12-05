@@ -20,6 +20,8 @@
 double latitude, longitude;
 
 
+
+
 //default span for zoom
 #define THE_SPAN 0.02f;
 
@@ -28,23 +30,16 @@ double latitude, longitude;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
+    // Do any additional setup after loading the view.
     //loading defaults
     [self loadDefault];
     
     //load gps data
     [self loadGpsParams];
     
-    //adding the annotation
-    [self addAnnotation];
-    
     //call the repository to retreive the user details
     [self.repository getAllUserDetails];
-    
-    //sample sms sending
-    NSString* message = @" Hey !!! This is Prashant testing his Orange Alert App. You are getting this SMS probable because of your location near to Testing device";
-    [self.repository sendSMSToUsers:self.repository.users sms:message];
     
 }
 
@@ -59,6 +54,7 @@ double latitude, longitude;
     longitude = [self.repository defaultLongitude];
 }
 
+//initializing and enabling the GPS service to implicitly call didUpdateLocation
 -(void) loadGpsParams{
     //gpx
     if ( [CLLocationManager locationServicesEnabled] )
@@ -84,36 +80,7 @@ double latitude, longitude;
     }
 }
 
--(void) addAnnotation{
-    //Annotation
-    
-    //Create the location array for storing multiple annotations
-    NSMutableArray* nearbyUsersLocation = [[NSMutableArray alloc] init];
-    CLLocationCoordinate2D location;
-    Annotation* nearbyUsersAnnotation;
-    
-    //setting annotation for nearby user 1
-    nearbyUsersAnnotation = [[Annotation alloc]init];
-    location.latitude = 43.0377;
-    location.longitude = -76.1340;
-    nearbyUsersAnnotation.coordinate = location;
-    nearbyUsersAnnotation.title = @"Mark";
-    nearbyUsersAnnotation.subtitle = @"Mark's description";
-    [nearbyUsersLocation addObject:nearbyUsersAnnotation];
-    
-    //setting annotation for nearby user 2
-    nearbyUsersAnnotation = [[Annotation alloc]init];
-    location.latitude = 43.0412;
-    location.longitude = -76.1195;
-    nearbyUsersAnnotation.coordinate = location;
-    nearbyUsersAnnotation.title = @"Jersey";
-    nearbyUsersAnnotation.subtitle = @"Jersey's description";
-    [nearbyUsersLocation addObject:nearbyUsersAnnotation];
-    
-    //adding the set  annotations to Mapview
-    [self.broadcastMapView addAnnotations:nearbyUsersLocation];
 
-}
 
 // CLLocationManagerDelegate method that receives location updates
 - (void)locationManager: (CLLocationManager *)manager
@@ -124,14 +91,24 @@ double latitude, longitude;
     CLLocation* location = [locations lastObject];
     NSLog(@"latitude %+.6f, longitude %+.6f\n",location.coordinate.latitude, location.coordinate.longitude);
     
-   
+    
     latitude = location.coordinate.latitude;
     longitude = location.coordinate.longitude;
     
     //update the new location for the user asynchronous location
-   // NSString* userId = @"678713856";
-   // [self.repository updateUserLocation:userId lat:latitude long:longitude];
+    NSString* userId = @"678713856";
+    [self.repository updateUserLocation:userId lat:latitude long:longitude];
     
+    //show the user on the Map with necessary coordinate configs
+    [self showUserOnTheMap];
+    
+    //showing the nearby registered users on the Map along with Annotation
+    [self addAnnotationForNearByUsers];
+    
+}
+
+//locating the user on the Map so that user's location can always be shown on the center
+-(void) showUserOnTheMap{
     //create the region
     MKCoordinateRegion userRegion;
     //Center
@@ -147,49 +124,104 @@ double latitude, longitude;
     userRegion.span = userSpan;
     //set our Mapview
     [self.broadcastMapView setRegion:userRegion animated:YES];
+}
+
+//Showing nearby users on the Map along with the annotation
+-(void) addAnnotationForNearByUsers{
+    //Annotation
     
+    //Setting the current location
+    CLLocation *currentLocationOfUser = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
+    
+    //Create the location array for storing multiple annotations
+    NSMutableArray* nearbyUsersLocation = [[NSMutableArray alloc] init];
+    CLLocationCoordinate2D location;
+    Annotation* nearbyUsersAnnotation;
+    
+    //very important to remove all remove all the exisiting entries in the dictionary of nearby users
+    [self.repository.nearbyUsers removeAllObjects];
+    
+    if([self.repository users] != Nil){
+        //looping through the users dictionary and adding annotation for each user
+        for (id key in [self.repository users]) {
+            UserDetailVO *user = [self.repository users][key];
+            
+            //the user should not be same as the current user - it will show that current user is nearby to himself :P
+            //if (![user.suid isEqualToString:@"678713856"] )
+            {
+                CLLocation *registeredUserLocation = [[CLLocation alloc] initWithLatitude:user.latitude longitude:user.longitude];
+                CLLocationDistance distanceBetweenCurrentAndRegisteredUser = [currentLocationOfUser distanceFromLocation:registeredUserLocation];
+                
+                //the registred user is a nearby user if the distance is less than 300 meters
+                 if (distanceBetweenCurrentAndRegisteredUser < MAX_NEARBY_DISTANCE)
+                {
+                    //Store these nearby users in the dictionary
+                    [self.repository.nearbyUsers setObject:user forKey:user.suid];
+                    
+                    //Show these users on the Map along with annotation
+                    nearbyUsersAnnotation = [[Annotation alloc]init];
+                    location.latitude = user.latitude;
+                    location.longitude = user.longitude;
+                    nearbyUsersAnnotation.coordinate = location;
+                    nearbyUsersAnnotation.title = user.name;
+                    nearbyUsersAnnotation.subtitle = [@"Student ID : " stringByAppendingString:user.suid];
+                    [nearbyUsersLocation addObject:nearbyUsersAnnotation];
+                }
+            }
+            
+        }
+    }
+    
+    //adding the set  annotations to Mapview
+    if([nearbyUsersLocation count] > 0){
+        [self.broadcastMapView addAnnotations:nearbyUsersLocation];
+    }
     
 }
 
+
+
+// It does the function to dispose of any resources that can be recreated.
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
--(void) makeRestAPICall
-{
-    NSString *post = [NSString stringWithFormat:@"{\"query\":\"*\"}"];
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+// when the user clicks on broadcast alert button
+- (IBAction)onClickBroadcastAlertButton:(id)sender {
     
-    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+    //message from broadcast text field
+    NSString* message = [self.broadcastMessageText text];
     
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"https://api-us.clusterpoint.com/102990/user_detail/_search.json"]];
-    [request setHTTPMethod:@"POST"];
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [request setHTTPBody:postData];
-    NSString* plainString = @"pp231189@gmail.com:123ABCabc$";
-    NSData *plainData = [plainString dataUsingEncoding:NSUTF8StringEncoding];
-    NSString *base64String = [plainData base64EncodedStringWithOptions:0];
-    NSString* headerValue = [@"Basic " stringByAppendingString:base64String];
-    [request addValue:headerValue forHTTPHeaderField:@"Authorization"];
+    //show the default message if the text field is empty. Case when user uses the App in emergency and do not have time to wirte the message
+    if (message == nil) {
+        message = DEFAULT_ALERT_MESSAGE ;
+    }
     
+    //trimming the alert message
+    NSString *trimmedString = [message stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-        NSLog(@"requestReply: %@", requestReply);
-    }] resume];
+    //delegating the task to repository to take care of SMS sending to nearby users
+    [self.repository sendSMSToUsers:self.repository.nearbyUsers sms:trimmedString];
+
 }
+
+//clear the text field when you start editing
+- (void) textViewDidBeginEditing:(UITextView *) textView {
+    [textView setText:@""];
+}
+
+
+
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

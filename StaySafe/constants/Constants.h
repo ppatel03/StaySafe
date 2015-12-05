@@ -55,4 +55,10 @@
 //content length header field
 #define CONTENT_LENGTH_HEADER_FIELD @"Content-Length"
 
+//maximum distance to determin if a registered user is nearby - current set to 5 miles
+#define MAX_NEARBY_DISTANCE 11000
+
+//default broadcast alert message
+#define DEFAULT_ALERT_MESSAGE @"Alert from Stay Safe App. You are getting this SMS probably because of your location near to Testing device."
+
 @end
