@@ -108,10 +108,10 @@
         UserDetailVO *user = users[key];
         
         //Adding the neraby user's name in the sms message text
-        message = [@[@"Hi", user.name, @".", message] componentsJoinedByString:@" "];
+        NSString* messageWithSalutation = [@[@"Hi", user.name, @".", message] componentsJoinedByString:@" "];
         
         //fetches the json Query required for the sending sms to a phone number with message body
-        NSString* query = [self.jsonModel getQueryForSendingTextSMS:user.phone sms:message];
+        NSString* query = [self.jsonModel getQueryForSendingTextSMS:user.phone sms:messageWithSalutation];
         
         //call the REST api to send sms asynchronously
         [self.restAPIDAO makeRESTAPIcallToSendSMS:query];

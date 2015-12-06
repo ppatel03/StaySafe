@@ -8,11 +8,35 @@
 
 #import <UIKit/UIKit.h>
 #import "RepositoryModel.h"
+#import <MapKit/MapKit.h>
+#import "Annotation.h"
+#import "UserDetailVO.h"
 
-@interface SafeWalkViewController : UIViewController
 
-//
+@import CoreLocation;
+
+
+@interface SafeWalkViewController : UIViewController<UITableViewDataSource,
+UITableViewDelegate,CLLocationManagerDelegate>
+
+//handle tp CLLocationManager is the central point for configuring the delivery of location
+@property (nonatomic , strong) CLLocationManager *mgr;
+
+//handle to the repository responsible for handling the data
 @property(nonatomic,weak) RepositoryModel *repository;
+//to populate the nearby contacts
+@property (weak, nonatomic) IBOutlet UITableView *contactsTableView;
+//button to  request safe walk
+@property (weak, nonatomic) IBOutlet UIButton *safewalkRequestButton;
+//map for showing the nearby users
+@property (weak, nonatomic) IBOutlet MKMapView *safewalkMapView;
+//array which which will hold values to populate data
+@property (strong, nonatomic) NSArray* contactData;
+//button which will behave like  a dropdown menu for table view
+//to appear and reappear dropdown menu when clicked
+@property (weak, nonatomic) IBOutlet UIButton *contactTableViewButton;
+
+- (IBAction)contactTableViewButtonAction:(id)sender;
 
 
 @end

@@ -20,6 +20,7 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *broadcastMapView;
 @property (nonatomic , strong) CLLocationManager *mgr;
+//handle to the repository responsible for handling the data
 @property(nonatomic,weak) RepositoryModel *repository;
 @property (weak, nonatomic) IBOutlet UITextField *broadcastMessageText;
 @property (weak, nonatomic) IBOutlet UIButton *broadcastAlertButton;

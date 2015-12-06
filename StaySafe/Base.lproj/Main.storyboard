@@ -90,27 +90,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nearby Contacts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75d-ut-94h">
-                                <rect key="frame" x="96" y="82" width="129" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOO-am-hYa">
-                                <rect key="frame" x="66" y="188" width="178" height="34"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="34"/>
                                 <state key="normal" title="Request for SafeWalk"/>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4ty-xQ-AVq">
-                                <rect key="frame" x="0.0" y="244" width="320" height="324"/>
+                                <rect key="frame" x="0.0" y="194" width="320" height="374"/>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v32-GJ-BXx">
-                                <rect key="frame" x="0.0" y="111" width="320" height="59"/>
+                                <rect key="frame" x="0.0" y="135" width="320" height="274"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUI-a6-PaK">
+                                <rect key="frame" x="0.0" y="106" width="320" height="30"/>
+                                <state key="normal" title="Select Nearby Contacts"/>
+                                <connections>
+                                    <action selector="contactTableViewButtonAction:" destination="HnE-OG-I8v" eventType="touchUpInside" id="hR2-WD-HBd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Safe Walk" id="mVa-i5-RTF"/>
+                    <connections>
+                        <outlet property="contactTableViewButton" destination="TUI-a6-PaK" id="53p-FG-YU1"/>
+                        <outlet property="contactsTableView" destination="v32-GJ-BXx" id="4nC-XR-AMz"/>
+                        <outlet property="safewalkMapView" destination="4ty-xQ-AVq" id="4bw-m8-xkb"/>
+                        <outlet property="safewalkRequestButton" destination="NOO-am-hYa" id="NtK-VF-G6f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bvq-7h-n4v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
