@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F05747D1C13DE0A00BCFAE3 /* SafeWalkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F05747C1C13DE0A00BCFAE3 /* SafeWalkViewController.m */; settings = {ASSET_TAGS = (); }; };
 		5F51B7631C05543500E64583 /* BroadcastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F51B7621C05543500E64583 /* BroadcastViewController.m */; settings = {ASSET_TAGS = (); }; };
 		5F51B7651C05679300E64583 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F51B7641C05679300E64583 /* MapKit.framework */; };
 		5F51B76B1C057B0500E64583 /* SyracuseNY.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5F51B76A1C057B0500E64583 /* SyracuseNY.gpx */; settings = {ASSET_TAGS = (); }; };
@@ -53,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F05747B1C13DE0A00BCFAE3 /* SafeWalkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafeWalkViewController.h; sourceTree = "<group>"; };
+		5F05747C1C13DE0A00BCFAE3 /* SafeWalkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeWalkViewController.m; sourceTree = "<group>"; };
 		5F51B7611C05543500E64583 /* BroadcastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BroadcastViewController.h; sourceTree = "<group>"; };
 		5F51B7621C05543500E64583 /* BroadcastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BroadcastViewController.m; sourceTree = "<group>"; };
 		5F51B7641C05679300E64583 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -186,6 +189,8 @@
 				5F98D6B51C0E956A00FA770C /* UserDetailDAO.m */,
 				5F98D6B71C0E981200FA770C /* UserDetailVO.h */,
 				5F98D6B81C0E981200FA770C /* UserDetailVO.m */,
+				5F05747B1C13DE0A00BCFAE3 /* SafeWalkViewController.h */,
+				5F05747C1C13DE0A00BCFAE3 /* SafeWalkViewController.m */,
 			);
 			path = StaySafe;
 			sourceTree = "<group>";
@@ -354,6 +359,7 @@
 				5F876C8E1C05A5E00069A063 /* Annotation.m in Sources */,
 				5F98D6B61C0E956A00FA770C /* UserDetailDAO.m in Sources */,
 				5FB434B11BFEBAA3005B1ED5 /* IconPageViewController.m in Sources */,
+				5F05747D1C13DE0A00BCFAE3 /* SafeWalkViewController.m in Sources */,
 				5F51B7631C05543500E64583 /* BroadcastViewController.m in Sources */,
 				5F98D6A81C0E6BAF00FA770C /* RESTApiDAO.m in Sources */,
 				5FB434811BFEB183005B1ED5 /* AppDelegate.m in Sources */,

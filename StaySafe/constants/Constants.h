@@ -61,4 +61,7 @@
 //default broadcast alert message
 #define DEFAULT_ALERT_MESSAGE @"Alert from Stay Safe App. You are getting this SMS probably because of your location near to Testing device."
 
+//default span for zoom
+#define THE_SPAN 0.02f;
+
 @end

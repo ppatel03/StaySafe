@@ -19,15 +19,6 @@
 
 double latitude, longitude;
 
-
-
-
-//default span for zoom
-#define THE_SPAN 0.02f;
-
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -36,10 +27,8 @@ double latitude, longitude;
     [self loadDefault];
     
     //load gps data
-    [self loadGpsParams];
-    
-    //call the repository to retreive the user details
-    [self.repository getAllUserDetails];
+    [self loadGpsParams];    
+   
     
 }
 

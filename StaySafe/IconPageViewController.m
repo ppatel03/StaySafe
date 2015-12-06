@@ -43,10 +43,18 @@ NSString* const imagePath = @"../images/";
     //load the defaults in the repository
     [self.repository storeDefaultLatitudeAndLongitude];
     
+    //call the repository to retreive the user details
+    [self.repository getAllUserDetails];
+    
     if([@"broadcast" caseInsensitiveCompare: segue.identifier] == NSOrderedSame  ){
         // pick up destination view controller from segue object - broadcast
         self.broadcastViewController = segue.destinationViewController;
         [self.broadcastViewController setRepository:self.repository];
+        
+    } else if([@"safewalk" caseInsensitiveCompare: segue.identifier] == NSOrderedSame  ){
+        // pick up destination view controller from segue object - broadcast
+        self.safewalkViewController = segue.destinationViewController;
+        [self.safewalkViewController setRepository:self.repository];
         
     }
 }

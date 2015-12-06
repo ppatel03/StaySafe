@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "model/RepositoryModel.h"
 #import "BroadcastViewController.h"
+#import "SafeWalkViewController.h"
 
 
 @interface IconPageViewController : UIViewController
@@ -19,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *safewalkIconButton;
 @property (strong,nonatomic) RepositoryModel *repository;
 @property (weak, nonatomic) BroadcastViewController  *broadcastViewController;
+@property (weak, nonatomic) SafeWalkViewController  *safewalkViewController;
+
 - (IBAction)shareIconButtonAction:(id)sender;
 
 @end
