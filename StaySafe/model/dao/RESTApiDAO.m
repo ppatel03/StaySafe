@@ -65,8 +65,7 @@
     //preparing the request Data to query Cluster point server
     [self prepareRequestToQueryJSON:request urlString:url postLen:postLength postContent:postData httpMethod:METHOD_POST authRequired:true];
     
-    NSLog(@"Updating the user location ");
-
+    NSLog(@"Updating the user location for query : %@", query);
     //sending asynchronous update request
     [self sendAsynchronousRequest:request];
     
@@ -120,8 +119,14 @@
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
-        NSString* jsonResponse = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-         NSLog(@"This is Asynchronous Response : %@",jsonResponse);
+        if (data != nil) {
+            NSString* jsonResponse = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+            NSLog(@"This is Asynchronous Response : %@",jsonResponse);
+        } else{
+            NSLog(@"This is Asynchronous Response : %@",error);
+
+        }
+       
 
     }] resume];
 }

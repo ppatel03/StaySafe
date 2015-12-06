@@ -107,6 +107,9 @@
     for (id key in users) {
         UserDetailVO *user = users[key];
         
+        //Adding the neraby user's name in the sms message text
+        message = [@[@"Hi", user.name, @".", message] componentsJoinedByString:@" "];
+        
         //fetches the json Query required for the sending sms to a phone number with message body
         NSString* query = [self.jsonModel getQueryForSendingTextSMS:user.phone sms:message];
         

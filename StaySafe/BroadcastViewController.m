@@ -140,6 +140,7 @@ double latitude, longitude;
     
     //very important to remove all remove all the exisiting entries in the dictionary of nearby users
     [self.repository.nearbyUsers removeAllObjects];
+   
     
     if([self.repository users] != Nil){
         //looping through the users dictionary and adding annotation for each user
@@ -174,6 +175,10 @@ double latitude, longitude;
     
     //adding the set  annotations to Mapview
     if([nearbyUsersLocation count] > 0){
+        // remove all the existing annotations of nearby users
+        [self.broadcastMapView removeAnnotations:[self.broadcastMapView annotations]];
+        
+        //add the new annotations
         [self.broadcastMapView addAnnotations:nearbyUsersLocation];
     }
     
