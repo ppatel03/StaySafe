@@ -8,6 +8,11 @@
 // It contains the declaration of methods  querying the data layer and storing the required data
 // to map the business entities
 //
+// Also comntains the logic of adding the contact the numbers to the contact list - taken from
+// https://www.dropbox.com/s/i6bymuddrwxbmkp/AddressBook.zip?dl=0 which is created
+// by JK on 01/08/13.
+//  Copyright (c) 2013 Fafadia Tech, Mumbai. All rights reserved.
+//
 // Its  a Repository pattern based on the idea of to separate the logic that retrieves the data and
 // maps it to the entity model from the business logic that acts on the model.
 // Refer https://msdn.microsoft.com/en-us/library/ff649690.aspx for Repository pattern
@@ -85,6 +90,8 @@
 }
 
 
+
+
 //update the user location
 -(void) updateUserLocation : (NSString*) userId lat : (double)latitude long : (double) longitude{
     UserDetailVO *updatedUser = self.users[userId];
@@ -111,6 +118,66 @@
     [self.userDetailDAO sendSMSToUsers:users sms:message];
 }
 
+// Get and store the contacts into contactList.
+- (void)storeContactsWithAddressBook:(ABAddressBookRef )addressBook {
+    
+    
+    self.contactList = [[NSMutableArray alloc] init];
+    CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
+    CFIndex nPeople = ABAddressBookGetPersonCount(addressBook);
+    
+    for (int i=0;i < nPeople;i++) {
+        NSMutableDictionary *dOfPerson=[NSMutableDictionary dictionary];
+        
+        ABRecordRef ref = CFArrayGetValueAtIndex(allPeople,i);
+        
+        //For username and surname
+        ABMultiValueRef phones =(__bridge ABMultiValueRef)((__bridge NSString*)ABRecordCopyValue(ref, kABPersonPhoneProperty));
+        
+        CFStringRef firstName, lastName;
+        firstName = ABRecordCopyValue(ref, kABPersonFirstNameProperty);
+        lastName  = ABRecordCopyValue(ref, kABPersonLastNameProperty);
+        [dOfPerson setObject:[NSString stringWithFormat:@"%@ %@", firstName, lastName] forKey:@"name"];
+        
+        //For Email ids
+        ABMutableMultiValueRef eMail  = ABRecordCopyValue(ref, kABPersonEmailProperty);
+        if(ABMultiValueGetCount(eMail) > 0) {
+            [dOfPerson setObject:(__bridge NSString *)ABMultiValueCopyValueAtIndex(eMail, 0) forKey:@"email"];
+            
+        }
+        
+        //For Phone number
+        for (int i=0; i < ABMultiValueGetCount(phones); i++) {
+            CFStringRef currentPhoneLabel = ABMultiValueCopyLabelAtIndex(phones, i);
+            CFStringRef currentPhoneValue = ABMultiValueCopyValueAtIndex(phones, i);
+            
+            if (CFStringCompare(currentPhoneLabel, kABPersonPhoneMobileLabel, 0) == kCFCompareEqualTo) {
+                [dOfPerson setObject:(__bridge NSString *)currentPhoneValue forKey:@"mobileNumber"];
+                NSString* numberString = dOfPerson[@"mobileNumber"];
+                numberString = [[numberString componentsSeparatedByCharactersInSet:
+                                 [[NSCharacterSet decimalDigitCharacterSet] invertedSet]] componentsJoinedByString:@""];
+                [dOfPerson setObject:numberString forKey:@"phone"];
+            }
+            
+            if (CFStringCompare(currentPhoneLabel, kABHomeLabel, 0) == kCFCompareEqualTo) {
+                [dOfPerson setObject:(__bridge NSString *)currentPhoneValue forKey:@"homeNumber"];
+                NSString* numberString = dOfPerson[@"homeNumber"];
+                numberString = [[numberString componentsSeparatedByCharactersInSet:
+                                 [[NSCharacterSet decimalDigitCharacterSet] invertedSet]] componentsJoinedByString:@""];
+                [dOfPerson setObject:numberString forKey:@"phone"];
+                
+            }
+            
+            CFRelease(currentPhoneLabel);
+            CFRelease(currentPhoneValue);
+        }
+        CFRelease(phones);
+        
+        [self.contactList addObject:dOfPerson];
+        
+    }
+    NSLog(@"Contacts = %@",self.contactList);
+}
 
 
 @end

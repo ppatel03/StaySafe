@@ -14,12 +14,11 @@
 
 @implementation SafeWalkViewController
 
-double latitude, longitude;
+double safeWalkLatitude, safeWalkLongitude;
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     // Do any additional setup after loading the view.
     //loading defaults
     [self loadDefault];
@@ -46,8 +45,8 @@ double latitude, longitude;
 
 -(void) loadDefault{
     //default latitude and longitude - incase GPS is not working
-    latitude = [self.repository defaultLatitude];
-    longitude = [self.repository defaultLongitude];
+    safeWalkLatitude = [self.repository defaultLatitude];
+    safeWalkLongitude = [self.repository defaultLongitude];
 }
 
 //initializing and enabling the GPS service to implicitly call didUpdateLocation
@@ -86,12 +85,12 @@ double latitude, longitude;
     NSLog(@"latitude %+.6f, longitude %+.6f\n",location.coordinate.latitude, location.coordinate.longitude);
     
     
-    latitude = location.coordinate.latitude;
-    longitude = location.coordinate.longitude;
+    safeWalkLatitude = location.coordinate.latitude;
+    safeWalkLongitude = location.coordinate.longitude;
     
     //update the new location for the user asynchronous location
     NSString* userId = @"678713856";
-    [self.repository updateUserLocation:userId lat:latitude long:longitude];
+    [self.repository updateUserLocation:userId lat:safeWalkLatitude long:safeWalkLongitude];
     
     //show the user on the Map with necessary coordinate configs
     [self showUserOnTheMap];
@@ -107,8 +106,8 @@ double latitude, longitude;
     MKCoordinateRegion userRegion;
     //Center
     CLLocationCoordinate2D center;
-    center.latitude = latitude;
-    center.longitude = longitude;
+    center.latitude = safeWalkLatitude;
+    center.longitude = safeWalkLongitude;
     //Span
     MKCoordinateSpan userSpan;
     userSpan.latitudeDelta = THE_SPAN;
@@ -125,7 +124,7 @@ double latitude, longitude;
     //Annotation
     
     //Setting the current location
-    CLLocation *currentLocationOfUser = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
+    CLLocation *currentLocationOfUser = [[CLLocation alloc] initWithLatitude:safeWalkLatitude longitude:safeWalkLongitude];
     
     //Create the location array for storing multiple annotations
     NSMutableArray* nearbyUsersLocation = [[NSMutableArray alloc] init];
@@ -229,6 +228,35 @@ double latitude, longitude;
         
     }
 }
+
+//store the user's contact list into repository
+- (void)storeAllContactsInRepository:(id)sender {
+    
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
+    
+    __block BOOL accessGranted = NO;
+    
+    if (&ABAddressBookRequestAccessWithCompletion != nil) { // We are on iOS 6
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+        
+        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
+            accessGranted = granted;
+            dispatch_semaphore_signal(semaphore);
+        });
+        
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    }
+    
+    else { // We are on iOS 5 or Older
+        accessGranted = YES;
+        [self.repository storeContactsWithAddressBook:addressBook];
+    }
+    
+    if (accessGranted) {
+        [self.repository storeContactsWithAddressBook:addressBook];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

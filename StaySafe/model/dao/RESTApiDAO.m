@@ -75,21 +75,7 @@
 
 // asynchronous sms sending to the user
 -(void) makeRESTAPIcallToSendSMS : (NSString*) query {
-    /*
-    NSDictionary *parameters = @{
-                                 @"number": @(3154478103),
-                                 @"message": @"I sent this message for free with textbelt.com"
-                                 };
-    
-    NSMutableString *parameterString = [NSMutableString string];
-    for (NSString *key in [parameters allKeys]) {
-        if ([parameterString length]) {
-            [parameterString appendString:@"&"];
-        }
-        [parameterString appendFormat:@"%@=%@", key, parameters[key]];
-    }
-    */
-    
+   
     NSLog(@"SMS send request Query  : %@",query);
     NSString *post = [NSString stringWithFormat:@"%@",query];
     NSData *postData = [post  dataUsingEncoding:NSUTF8StringEncoding ];

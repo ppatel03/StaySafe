@@ -16,6 +16,8 @@
 #include "InitModel.h"
 #include "UserDetailDAO.h"
 #include "UserDetailVO.h"
+#import <AddressBook/ABAddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
 
 
 @interface RepositoryModel : NSObject
@@ -31,6 +33,9 @@
 
 //HAS-A NSMutableDictionary of nearby users
 @property (strong,nonatomic) NSMutableDictionary* nearbyUsers;
+
+//holds the contact list of the users
+@property (strong,nonatomic) NSMutableArray *contactList;
 
 
 //default getters and setters
@@ -48,6 +53,9 @@
 
 // aynchronous sending of SMSes to the list of users
 - (void) sendSMSToUsers : (NSMutableDictionary*) users sms : (NSString*) message ;
+
+// Get and store the contacts into contactList.
+- (void)storeContactsWithAddressBook:(ABAddressBookRef )addressBook;
 
 
 @end

@@ -46,7 +46,7 @@
                                 </constraints>
                                 <state key="normal" image="icon-safewalk"/>
                                 <connections>
-                                    <segue destination="HnE-OG-I8v" kind="push" id="Yax-SU-wQO"/>
+                                    <segue destination="HnE-OG-I8v" kind="push" identifier="safewalk" id="Yax-SU-wQO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GXK-rp-1zn">

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5F05747D1C13DE0A00BCFAE3 /* SafeWalkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F05747C1C13DE0A00BCFAE3 /* SafeWalkViewController.m */; settings = {ASSET_TAGS = (); }; };
+		5F42C47F1C1571F1000BF96B /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F42C47E1C1571F1000BF96B /* AddressBook.framework */; };
+		5F42C4811C1571FA000BF96B /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F42C4801C1571FA000BF96B /* AddressBookUI.framework */; };
 		5F51B7631C05543500E64583 /* BroadcastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F51B7621C05543500E64583 /* BroadcastViewController.m */; settings = {ASSET_TAGS = (); }; };
 		5F51B7651C05679300E64583 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F51B7641C05679300E64583 /* MapKit.framework */; };
 		5F51B76B1C057B0500E64583 /* SyracuseNY.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5F51B76A1C057B0500E64583 /* SyracuseNY.gpx */; settings = {ASSET_TAGS = (); }; };
@@ -56,6 +58,8 @@
 /* Begin PBXFileReference section */
 		5F05747B1C13DE0A00BCFAE3 /* SafeWalkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafeWalkViewController.h; sourceTree = "<group>"; };
 		5F05747C1C13DE0A00BCFAE3 /* SafeWalkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeWalkViewController.m; sourceTree = "<group>"; };
+		5F42C47E1C1571F1000BF96B /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		5F42C4801C1571FA000BF96B /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		5F51B7611C05543500E64583 /* BroadcastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BroadcastViewController.h; sourceTree = "<group>"; };
 		5F51B7621C05543500E64583 /* BroadcastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BroadcastViewController.m; sourceTree = "<group>"; };
 		5F51B7641C05679300E64583 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -106,6 +110,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F42C4811C1571FA000BF96B /* AddressBookUI.framework in Frameworks */,
+				5F42C47F1C1571F1000BF96B /* AddressBook.framework in Frameworks */,
 				5F876C7F1C0597BB0069A063 /* CoreGraphics.framework in Frameworks */,
 				5FDFA6371C058CD100DE1DB6 /* UIKit.framework in Frameworks */,
 				5FDFA6351C058B2C00DE1DB6 /* CoreLocation.framework in Frameworks */,
@@ -134,6 +140,8 @@
 		5FB434701BFEB183005B1ED5 = {
 			isa = PBXGroup;
 			children = (
+				5F42C4801C1571FA000BF96B /* AddressBookUI.framework */,
+				5F42C47E1C1571F1000BF96B /* AddressBook.framework */,
 				5FF53BD81C0AFF060088A54B /* InitModel.h */,
 				5FF53BD91C0AFF060088A54B /* InitModel.m */,
 				5F876C7E1C0597BB0069A063 /* CoreGraphics.framework */,
