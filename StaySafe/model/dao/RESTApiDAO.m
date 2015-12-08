@@ -28,7 +28,7 @@
 
 //fetches the data from the Cluster point DB based on Search query
 -(NSString*) makeRESTAPIcallForSearch:(NSString*)  query table : (NSString*) tableName{
-    query = @"{\"query\":\"*\",\"docs\":1000}";
+   // query = @"{\"query\":\"*\",\"docs\":1000}";
     NSString *post = [NSString stringWithFormat:@"%@",query];
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     

@@ -10,6 +10,7 @@
 		5F05747D1C13DE0A00BCFAE3 /* SafeWalkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F05747C1C13DE0A00BCFAE3 /* SafeWalkViewController.m */; settings = {ASSET_TAGS = (); }; };
 		5F42C47F1C1571F1000BF96B /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F42C47E1C1571F1000BF96B /* AddressBook.framework */; };
 		5F42C4811C1571FA000BF96B /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F42C4801C1571FA000BF96B /* AddressBookUI.framework */; };
+		5F45E3E51C16EC6B008CAB28 /* RequestSafeWalkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F45E3E41C16EC6B008CAB28 /* RequestSafeWalkViewController.m */; settings = {ASSET_TAGS = (); }; };
 		5F51B7631C05543500E64583 /* BroadcastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F51B7621C05543500E64583 /* BroadcastViewController.m */; settings = {ASSET_TAGS = (); }; };
 		5F51B7651C05679300E64583 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F51B7641C05679300E64583 /* MapKit.framework */; };
 		5F51B76B1C057B0500E64583 /* SyracuseNY.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5F51B76A1C057B0500E64583 /* SyracuseNY.gpx */; settings = {ASSET_TAGS = (); }; };
@@ -60,6 +61,8 @@
 		5F05747C1C13DE0A00BCFAE3 /* SafeWalkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeWalkViewController.m; sourceTree = "<group>"; };
 		5F42C47E1C1571F1000BF96B /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		5F42C4801C1571FA000BF96B /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		5F45E3E31C16EC6B008CAB28 /* RequestSafeWalkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestSafeWalkViewController.h; sourceTree = "<group>"; };
+		5F45E3E41C16EC6B008CAB28 /* RequestSafeWalkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestSafeWalkViewController.m; sourceTree = "<group>"; };
 		5F51B7611C05543500E64583 /* BroadcastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BroadcastViewController.h; sourceTree = "<group>"; };
 		5F51B7621C05543500E64583 /* BroadcastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BroadcastViewController.m; sourceTree = "<group>"; };
 		5F51B7641C05679300E64583 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -199,6 +202,8 @@
 				5F98D6B81C0E981200FA770C /* UserDetailVO.m */,
 				5F05747B1C13DE0A00BCFAE3 /* SafeWalkViewController.h */,
 				5F05747C1C13DE0A00BCFAE3 /* SafeWalkViewController.m */,
+				5F45E3E31C16EC6B008CAB28 /* RequestSafeWalkViewController.h */,
+				5F45E3E41C16EC6B008CAB28 /* RequestSafeWalkViewController.m */,
 			);
 			path = StaySafe;
 			sourceTree = "<group>";
@@ -372,6 +377,7 @@
 				5F98D6A81C0E6BAF00FA770C /* RESTApiDAO.m in Sources */,
 				5FB434811BFEB183005B1ED5 /* AppDelegate.m in Sources */,
 				5F98D6B31C0E762D00FA770C /* Constants.m in Sources */,
+				5F45E3E51C16EC6B008CAB28 /* RequestSafeWalkViewController.m in Sources */,
 				5FF53BE01C0B151E0088A54B /* RepositoryModel.m in Sources */,
 				5F98D6B91C0E981200FA770C /* UserDetailVO.m in Sources */,
 				5FB4347E1BFEB183005B1ED5 /* main.m in Sources */,

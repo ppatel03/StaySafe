@@ -11,6 +11,7 @@
 #import <MapKit/MapKit.h>
 #import "Annotation.h"
 #import "UserDetailVO.h"
+#import "RequestSafeWalkViewController.h"
 
 
 @import CoreLocation;
@@ -37,5 +38,8 @@ UITableViewDelegate,CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *contactTableViewButton;
 //operations to handle when safe walk request button is clicked
 - (IBAction)onClickSafeWalkRequestButton:(id)sender;
+//handle to RequestSafeWalkViewController for passing the repository via seque
+@property (weak, nonatomic) RequestSafeWalkViewController  *requestSafeWalkViewController;
+
 
 @end

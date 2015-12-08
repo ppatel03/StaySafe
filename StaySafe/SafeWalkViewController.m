@@ -386,6 +386,24 @@ UserDetailVO* currentUser;
     
 }
 
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+// This function can also be called explicitly
+//[self performSegueWithIdentifier:@"myIdentifier" sender:self];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    // note which segue chosen (need to know if more than one segue from current view controller)
+    NSLog( @"Transition via segue: '%@'", segue.identifier);
+    
+    [super prepareForSegue:segue sender:sender];
+    
+    if([@"requestSafeWalk" caseInsensitiveCompare: segue.identifier] == NSOrderedSame  ){
+        // pick up destination view controller from segue object - broadcast
+        self.requestSafeWalkViewController = segue.destinationViewController;
+        [self.requestSafeWalkViewController setRepository:self.repository];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

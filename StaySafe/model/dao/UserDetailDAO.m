@@ -89,6 +89,19 @@
     return users;
 }
 
+// fetch  all data related to safe walk
+- ( NSMutableDictionary *) getAllSafeWalkData   {
+    NSString* query = [self.jsonModel getJSONQueryForFetchingAllRecords];
+    
+    //calling the REST API layer
+    NSString* jsonString = [self.restAPIDAO makeRESTAPIcallForSearch:query table:USER_SAFEWALK_DB_NAME];
+    
+    //parse the json string into dicitonary
+    NSMutableDictionary *jsonDictionary = [self.jsonModel getUsersDictionaryFromJson:jsonString];
+    
+    return jsonDictionary;
+}
+
 //  asynchronous update to user location
 - (void) updateUserLocation : (UserDetailVO*) user{
     

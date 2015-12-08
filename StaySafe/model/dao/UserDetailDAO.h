@@ -34,5 +34,6 @@
 //  insert safewalk request data
 - (void) insertUserSafeWalkData : (NSString*) from to : (NSString*) to;
 
-
+// fetch  all data related to safe walk
+- (NSMutableDictionary *) getAllSafeWalkData  ;
 @end

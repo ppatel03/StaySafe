@@ -69,6 +69,8 @@
 
 #define DEFAULT_SAFE_WALK_DROPDOWN_TEXT "Select Nearby Contacts"
 
+#define DEFAULT_REQUESTED_SAFE_WALK_USERS_TEXT "Watch Requested User Walk"
+
 //default span for zoom
 #define THE_SPAN 0.02f;
 

@@ -34,6 +34,12 @@
 //HAS-A NSMutableDictionary of nearby users
 @property (strong,nonatomic) NSMutableDictionary* nearbyUsers;
 
+//HAS-A NSMutableDictionary of safe walk requested from users
+@property (strong,nonatomic) NSMutableDictionary* safeWalkRequestedFromUsers;
+
+//HAS-A NSMutableDictionary of safe walk requested to users
+@property (strong,nonatomic) NSMutableDictionary* safeWalkRequestedToUsers;
+
 //holds the contact list of the users
 @property (strong,nonatomic) NSMutableArray *contactList;
 
@@ -65,6 +71,9 @@
 
 //check if the phone number exists in the contact list
 - (BOOL)doesContactUserExist:(NSMutableArray *)array byName:(NSString *)theName;
+
+//store the data containing safewalk related information
+- (void) storeSafeWalkRelatedInformation ;
 
 
 @end

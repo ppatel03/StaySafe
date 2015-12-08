@@ -31,6 +31,10 @@
 @synthesize defaultLongitude;
 //getters and setters generators for dictionary of nearby users
 @synthesize nearbyUsers;
+//getters and setters generators for dictionary of safewalk requested From users
+@synthesize safeWalkRequestedFromUsers;
+//getters and setters generators for dictionary of safewalk requested To users
+@synthesize safeWalkRequestedToUsers;
 
 
 //default constructor
@@ -40,6 +44,11 @@
     {
         // intialize the dictionary for nearby users
         nearbyUsers = [NSMutableDictionary dictionary];
+        // intialize the dictionary for safewalk requested From users
+        safeWalkRequestedFromUsers = [NSMutableDictionary dictionary];
+        // intialize the dictionary for safewalk requested To users
+        safeWalkRequestedToUsers = [NSMutableDictionary dictionary];
+        
     }
     return self;
 }
@@ -208,6 +217,52 @@
     }
     
     return nil;
+}
+
+//store the data containing safewalk related information
+- (void) storeSafeWalkRelatedInformation {
+    //very important to remove all remove all the exisiting entries in the dictionary
+    [self.safeWalkRequestedFromUsers removeAllObjects];
+    [self.safeWalkRequestedToUsers removeAllObjects];
+
+    NSMutableDictionary* jsonDictionary = [self.userDetailDAO getAllSafeWalkData];
+    
+    //using jsonDictionary to store safe walk information of the form  from --- [to] and to --- [from]:
+    if ([jsonDictionary isKindOfClass:[NSMutableDictionary class]]){
+        NSArray *userDictionaryArray = jsonDictionary[@"documents"];
+        if ([userDictionaryArray isKindOfClass:[NSArray class]]){
+            for (NSDictionary *dictionary in userDictionaryArray) {
+                
+                NSString* fromId = [dictionary objectForKey:@"from"];
+                NSString* toId= [dictionary objectForKey:@"to"];
+                
+                // store data in safeWalkFromUsers
+                if(self.safeWalkRequestedFromUsers[fromId] == nil){
+                    NSMutableArray* safeWalkToArray = [[NSMutableArray alloc]  init];
+                    [safeWalkToArray addObject:toId];
+                    [self.safeWalkRequestedFromUsers setObject:safeWalkToArray forKey:fromId];
+                } else{
+                    NSMutableArray* safeWalkToArray = self.safeWalkRequestedFromUsers[fromId];
+                    [safeWalkToArray addObject:toId];
+                    [self.safeWalkRequestedFromUsers setObject:safeWalkToArray forKey:fromId];
+                }
+                
+                // store data in safeWalkToUsers
+                if(self.safeWalkRequestedToUsers[toId] == nil){
+                    NSMutableArray* safeWalkFromArray = [[NSMutableArray alloc]  init];
+                    [safeWalkFromArray addObject:fromId];
+                    [self.safeWalkRequestedToUsers setObject:safeWalkFromArray forKey:toId];
+                } else{
+                    NSMutableArray* safeWalkFromArray = self.safeWalkRequestedToUsers[toId];
+                    [safeWalkFromArray addObject:fromId];
+                    [self.safeWalkRequestedToUsers setObject:safeWalkFromArray forKey:toId];
+                }
+                
+                
+            }
+        }
+    }
+
 }
 
 
