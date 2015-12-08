@@ -51,6 +51,20 @@
     return query;
 }
 
+//get the query for safewalk update
+-(NSString*) getJSONQueryForSafeWalkInsert : (NSString*) from long : (NSString*) to{
+    NSString* query =  @"{\"id\":\"id_value\",\"from\":\"from_value\",\"to\":\"to_value\"}";
+  
+    //This combination of generating the primary keys will also help to prevent multiple duplicate safe walk request
+    NSString* idValue = [@[from,to] componentsJoinedByString:@"."];
+    
+    query = [query stringByReplacingOccurrencesOfString:@"id_value" withString:idValue];
+    query = [query stringByReplacingOccurrencesOfString:@"from_value" withString:from ];
+    query = [query stringByReplacingOccurrencesOfString:@"to_value" withString:to ];
+    return query;
+}
+
+
 //get the  formatted query for text smses
 -(NSString*) getQueryForSendingTextSMS : (NSString*) phone  sms : (NSString*) message {
     NSString* query =  @"message=message_value&number=number_value";

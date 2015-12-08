@@ -31,5 +31,8 @@
 // aynchronous sending of SMSes to the list of users
 - (void) sendSMSToUsers : (NSMutableDictionary*) users sms : (NSString*) message ;
 
+//  insert safewalk request data
+- (void) insertUserSafeWalkData : (NSString*) from to : (NSString*) to;
+
 
 @end

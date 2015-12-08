@@ -16,6 +16,9 @@
 
 double safeWalkLatitude, safeWalkLongitude;
 
+NSString* currentUserId;
+UserDetailVO* currentUser;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,11 +30,27 @@ double safeWalkLatitude, safeWalkLongitude;
     [self loadGpsParams];
     
     //contact data
-    self.contactData = [[NSArray alloc] initWithObjects:@"Value1",@"Value2",@"Value3", nil];
+    self.contactData = [[NSMutableArray alloc]  init];
+    
+    //get the nearby users
+    [self storeDataOfNearbyUsers];
+    
+    //fetch the contact information
+    [self storeAllContactsInRepository];
+    
+    NSLog(@"Contacts = %@",self.repository.contactList);
+    
+    //store the sorted contacts
+    [self storeContactsSortedByDistance];
+    
     
     //assign the delegate to itself
     self.contactsTableView.delegate = self;
     self.contactsTableView.dataSource = self;
+    
+    //refresh the table view with new data
+    [self.contactsTableView reloadData];
+    
     
     //hide the table view to appear as the Select drop down box
     self.contactsTableView.hidden = YES;
@@ -47,6 +66,8 @@ double safeWalkLatitude, safeWalkLongitude;
     //default latitude and longitude - incase GPS is not working
     safeWalkLatitude = [self.repository defaultLatitude];
     safeWalkLongitude = [self.repository defaultLongitude];
+    currentUserId = @"678713856";
+    currentUser = self.repository.users[currentUserId];
 }
 
 //initializing and enabling the GPS service to implicitly call didUpdateLocation
@@ -89,7 +110,7 @@ double safeWalkLatitude, safeWalkLongitude;
     safeWalkLongitude = location.coordinate.longitude;
     
     //update the new location for the user asynchronous location
-    NSString* userId = @"678713856";
+    NSString* userId = currentUserId;
     [self.repository updateUserLocation:userId lat:safeWalkLatitude long:safeWalkLongitude];
     
     //show the user on the Map with necessary coordinate configs
@@ -98,6 +119,11 @@ double safeWalkLatitude, safeWalkLongitude;
     //showing the nearby registered users on the Map along with Annotation
     [self addAnnotationForNearByUsers];
     
+    //store the sorted contacts which are new due to location change
+    [self storeContactsSortedByDistance];
+    
+    //refresh the table view with new data
+    [self.contactsTableView reloadData];
 }
 
 //locating the user on the Map so that user's location can always be shown on the center
@@ -141,10 +167,11 @@ double safeWalkLatitude, safeWalkLongitude;
             UserDetailVO *user = [self.repository users][key];
             
             //the user should not be same as the current user - it will show that current user is nearby to himself :P
-            //if (![user.suid isEqualToString:@"678713856"] )
+            //if (![user.suid isEqualToString:currentUserId] )
             {
                 CLLocation *registeredUserLocation = [[CLLocation alloc] initWithLatitude:user.latitude longitude:user.longitude];
                 CLLocationDistance distanceBetweenCurrentAndRegisteredUser = [currentLocationOfUser distanceFromLocation:registeredUserLocation];
+                user.distanceFromUser =[NSNumber numberWithDouble: distanceBetweenCurrentAndRegisteredUser];
                 
                 //the registred user is a nearby user if the distance is less than 300 meters
                 if (distanceBetweenCurrentAndRegisteredUser < MAX_NEARBY_DISTANCE)
@@ -159,6 +186,7 @@ double safeWalkLatitude, safeWalkLongitude;
                     nearbyUsersAnnotation.coordinate = location;
                     nearbyUsersAnnotation.title = user.name;
                     nearbyUsersAnnotation.subtitle = [@"Student ID : " stringByAppendingString:user.suid];
+                    
                     [nearbyUsersLocation addObject:nearbyUsersAnnotation];
                 }
             }
@@ -177,8 +205,39 @@ double safeWalkLatitude, safeWalkLongitude;
     
 }
 
-
-
+- (void) storeDataOfNearbyUsers{
+    //current user id
+    NSString* userId = currentUserId;
+    
+    //get the current user
+    UserDetailVO* currentUser = self.repository.users[userId];
+    
+    //Setting the current location
+    CLLocation *currentLocationOfUser = [[CLLocation alloc] initWithLatitude:currentUser.latitude longitude:currentUser.longitude];
+    
+    if([self.repository users] != Nil){
+        //looping through the users dictionary and adding annotation for each user
+        for (id key in [self.repository users]) {
+            UserDetailVO *user = [self.repository users][key];
+            
+            //the user should not be same as the current user - it will show that current user is nearby to himself :P
+            //if (![user.suid isEqualToString:currentUserId] )
+            {
+                CLLocation *registeredUserLocation = [[CLLocation alloc] initWithLatitude:user.latitude longitude:user.longitude];
+                CLLocationDistance distanceBetweenCurrentAndRegisteredUser = [currentLocationOfUser distanceFromLocation:registeredUserLocation];
+                user.distanceFromUser =[NSNumber numberWithDouble: distanceBetweenCurrentAndRegisteredUser];
+                
+                //the registred user is a nearby user if the distance is less than 300 meters
+                if (distanceBetweenCurrentAndRegisteredUser < MAX_NEARBY_DISTANCE)
+                {
+                    //Store these nearby users in the dictionary
+                    [self.repository.nearbyUsers setObject:user forKey:user.suid];
+                }
+            }
+            
+        }
+    }
+}
 
 
 
@@ -217,6 +276,9 @@ double safeWalkLatitude, safeWalkLongitude;
     
     [self.contactTableViewButton setTitle:cell.textLabel.text forState:UIControlStateNormal];
     self.contactsTableView.hidden = YES;
+    
+    
+    
 }
 
 //to appear and reappear dropdown menu when clicked
@@ -225,12 +287,12 @@ double safeWalkLatitude, safeWalkLongitude;
         self.contactsTableView.hidden = NO;
     } else {
         self.contactsTableView.hidden =YES;
-        
     }
+    
 }
 
 //store the user's contact list into repository
-- (void)storeAllContactsInRepository:(id)sender {
+- (void)storeAllContactsInRepository {
     
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
     
@@ -257,6 +319,72 @@ double safeWalkLatitude, safeWalkLongitude;
     }
 }
 
+//operations to handle when safe walk request button is clicked
+- (IBAction)onClickSafeWalkRequestButton:(id)sender {
+    
+    NSString *selectedCellText= [self.contactTableViewButton currentTitle];
+    selectedCellText = [selectedCellText  stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    //perform safe walk sms and insert operation for valid dropdown text
+    if ([selectedCellText compare: @DEFAULT_SAFE_WALK_DROPDOWN_TEXT  options:NSCaseInsensitiveSearch] != NSOrderedSame){
+        NSArray *selectedCellArray = [selectedCellText componentsSeparatedByString:@" - "];
+        
+        //we are interested in fetching the phone number
+        NSString* phoneNumberForSafeWalkRequest = selectedCellArray[1];
+        
+        //fetch the user based on phone number
+        UserDetailVO* requestedUser = [self.repository getUserBasedOnPhoneNumber:phoneNumberForSafeWalkRequest];
+        
+        if(requestedUser != nil){
+            //first send SMS to the requested user - since its an current user's safety is more important
+            NSMutableDictionary* safewalkRequestedUserDictionary = [NSMutableDictionary dictionary];
+            [safewalkRequestedUserDictionary setObject:requestedUser forKey:requestedUser.suid];
+            
+            //current user's name
+            NSString* userName = currentUser.name;
+            
+            //sms message
+            NSString* message = [userName stringByAppendingString:DEFAULT_SAFE_WALK_MESSAGE];
+            
+            //take help of repository to send SMS
+            [self.repository sendSMSToUsers:safewalkRequestedUserDictionary sms:message];
+            
+            //NOW INSERT THE SAFEWALK Data into database
+            [self.repository insertUserSafeWalkData:currentUser.suid to: requestedUser.suid ];
+        }
+        
+        
+    }
+}
+
+//sort the contact list
+- (void) storeContactsSortedByDistance{
+    
+    //clear the inital contacts
+    [self.contactData removeAllObjects];
+    
+    NSMutableDictionary* dict = [self.repository nearbyUsers];
+    
+    //order the dictionary keys according to the nearby distance
+    NSArray *orderedKeys = [dict keysSortedByValueUsingComparator:^NSComparisonResult(id obj1, id obj2){
+        return [[obj1 distanceFromUser] compare:[obj2 distanceFromUser]];
+    }];
+    
+    NSLog(@" Ordered Dcitionary%@", orderedKeys);
+    
+    //looping through the dictionary in iOS
+    for(NSString* key in orderedKeys){
+        UserDetailVO* user = self.repository.users[key];
+        if([self.repository doesContactUserExist : self.repository.contactList byName:user.phone]){
+            
+            NSString* contactUserData = [@[user.name , user.phone] componentsJoinedByString:@" - "];
+            [self.contactData addObject:contactUserData];
+        }
+        
+    }
+    
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

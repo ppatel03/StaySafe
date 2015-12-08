@@ -31,12 +31,11 @@ UITableViewDelegate,CLLocationManagerDelegate>
 //map for showing the nearby users
 @property (weak, nonatomic) IBOutlet MKMapView *safewalkMapView;
 //array which which will hold values to populate data
-@property (strong, nonatomic) NSArray* contactData;
+@property (strong, nonatomic) NSMutableArray* contactData;
 //button which will behave like  a dropdown menu for table view
 //to appear and reappear dropdown menu when clicked
 @property (weak, nonatomic) IBOutlet UIButton *contactTableViewButton;
-
-- (IBAction)contactTableViewButtonAction:(id)sender;
-
+//operations to handle when safe walk request button is clicked
+- (IBAction)onClickSafeWalkRequestButton:(id)sender;
 
 @end

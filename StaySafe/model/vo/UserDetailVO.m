@@ -16,4 +16,5 @@
 @synthesize phone;
 @synthesize latitude;
 @synthesize longitude;
+@synthesize distanceFromUser;
 @end

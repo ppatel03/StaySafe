@@ -118,6 +118,14 @@
     [self.userDetailDAO sendSMSToUsers:users sms:message];
 }
 
+//  insert safewalk request data
+- (void) insertUserSafeWalkData : (NSString*) from to : (NSString*) to{
+    
+    //asynchronous call to inserrt user's safewalk data through REST APIs
+    [self.userDetailDAO insertUserSafeWalkData:from to:to];
+    
+}
+
 // Get and store the contacts into contactList.
 - (void)storeContactsWithAddressBook:(ABAddressBookRef )addressBook {
     
@@ -176,8 +184,33 @@
         [self.contactList addObject:dOfPerson];
         
     }
-    NSLog(@"Contacts = %@",self.contactList);
+   
 }
+
+//check if the phone number exists in the contact list
+- (BOOL)doesContactUserExist:(NSMutableArray *)array byName:(NSString *)theName {
+    NSInteger idx = 0;
+    for (NSDictionary* dict in array) {
+        if ([[dict objectForKey:@"phone"] isEqualToString:theName])
+            return YES;
+        ++idx;
+    }
+    return NO;
+}
+
+//get the user based on phone number
+- (UserDetailVO*) getUserBasedOnPhoneNumber : (NSString*) phoneNumber {
+    for (id key in self.users) {
+        UserDetailVO* user = self.users[key];
+        if([user.phone isEqualToString:phoneNumber] ){
+            return user;
+        }
+    }
+    
+    return nil;
+}
+
+
 
 
 @end

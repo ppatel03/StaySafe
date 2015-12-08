@@ -141,7 +141,8 @@ double latitude, longitude;
             {
                 CLLocation *registeredUserLocation = [[CLLocation alloc] initWithLatitude:user.latitude longitude:user.longitude];
                 CLLocationDistance distanceBetweenCurrentAndRegisteredUser = [currentLocationOfUser distanceFromLocation:registeredUserLocation];
-                
+                user.distanceFromUser =[NSNumber numberWithDouble: distanceBetweenCurrentAndRegisteredUser];
+
                 //the registred user is a nearby user if the distance is less than 300 meters
                  if (distanceBetweenCurrentAndRegisteredUser < MAX_NEARBY_DISTANCE)
                 {

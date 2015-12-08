@@ -22,8 +22,11 @@
 //user details db
 #define USER_DETAILS_DB_NAME @"user_detail"
 
-//user details db
+//user location db
 #define USER_LOCATION_DB_NAME @"user_location"
+
+//user safewalk db
+#define USER_SAFEWALK_DB_NAME @"user_safewalk"
 
 //account number
 #define USER_ACCOUNT_NUMBER @"102990"
@@ -56,10 +59,15 @@
 #define CONTENT_LENGTH_HEADER_FIELD @"Content-Length"
 
 //maximum distance to determin if a registered user is nearby - current set to 5 miles
-#define MAX_NEARBY_DISTANCE 11000
+#define MAX_NEARBY_DISTANCE 20000
 
 //default broadcast alert message
 #define DEFAULT_ALERT_MESSAGE @"Alert from Stay Safe App. You are getting this SMS probably because of your location near to Testing device."
+
+//default Safe walk message
+#define DEFAULT_SAFE_WALK_MESSAGE @" is leaving from certain location and wanted you to watch him/her walk."
+
+#define DEFAULT_SAFE_WALK_DROPDOWN_TEXT "Select Nearby Contacts"
 
 //default span for zoom
 #define THE_SPAN 0.02f;

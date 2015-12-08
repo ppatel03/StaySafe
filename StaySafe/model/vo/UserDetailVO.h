@@ -16,5 +16,6 @@
 @property NSString* phone;
 @property double latitude;
 @property double longitude;
+@property NSNumber* distanceFromUser;
 
 @end

@@ -28,6 +28,7 @@
 
 //fetches the data from the Cluster point DB based on Search query
 -(NSString*) makeRESTAPIcallForSearch:(NSString*)  query table : (NSString*) tableName{
+    query = @"{\"query\":\"*\",\"docs\":1000}";
     NSString *post = [NSString stringWithFormat:@"%@",query];
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     
@@ -71,6 +72,28 @@
     
 }
 
+// asynchronous insert for safewalk db
+-(void) makeRESTAPIcallToInsertUserSafeWalkData : (NSString*) query table : (NSString*) tableName{
+    NSString *post = [NSString stringWithFormat:@"%@",query];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    
+    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@%@%@%@%@%@", DOMAIN_URL, URL_DELIMITER,USER_ACCOUNT_NUMBER,URL_DELIMITER,
+                     tableName,URL_DELIMITER,JSON_EXTENSION];
+    
+    //preparing the request Data to query Cluster point server
+    [self prepareRequestToQueryJSON:request urlString:url postLen:postLength postContent:postData httpMethod:METHOD_POST authRequired:true];
+    
+    NSLog(@"Inserting the user safe walk data for query : %@", query);
+    //sending asynchronous update request
+    [self sendAsynchronousRequest:request];
+    
+}
+
 
 
 // asynchronous sms sending to the user
@@ -96,8 +119,29 @@
     //sending asynchronous update request
     [self sendAsynchronousRequest:request];
     
+}
+
+// prepare the request to query the cluster point database
+- (void) prepareRequestToQueryJSON : (NSMutableURLRequest*) request urlString : (NSString*) url
+                           postLen : (NSString*) postLength postContent : (NSData*) postData
+                        httpMethod : (NSString*) methodName authRequired : (BOOL) isAuthRequired{
+    
+    [request setURL:[NSURL URLWithString:url]];
+    [request setHTTPMethod:methodName];
+    [request setValue:postLength forHTTPHeaderField:CONTENT_LENGTH_HEADER_FIELD];
+    [request setHTTPBody:postData];
+    
+    if (isAuthRequired) {
+        NSString* plainString = USER_CREDENTIALS;
+        NSData *plainData = [plainString dataUsingEncoding:NSUTF8StringEncoding];
+        NSString *base64String = [plainData base64EncodedStringWithOptions:0];
+        NSString* headerValue = [USER_CREDENTIALS_TYPE stringByAppendingString:base64String];
+        [request addValue:headerValue forHTTPHeaderField:AUTHORIZATION_HEADER_FIELD];
+    }
     
 }
+
+/* ============================= METHODS WITH LOGIC OF SENDING SYNCHRONOUS/ASYNCHRONOUS REQUEST STARTS HERE ===================================== */
 
 //performs the asynchronous non-blocking operation for the asynchronous REST API call and returns the data received from the server
 -(void) sendAsynchronousRequest : (NSMutableURLRequest*) request {
@@ -105,11 +149,12 @@
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
+        // useful for logging
         if (data != nil) {
             NSString* jsonResponse = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-            NSLog(@"This is Asynchronous Response : %@",jsonResponse);
+            NSLog(@"This is Asynchronous Succesfull Response : %@",jsonResponse);
         } else{
-            NSLog(@"This is Asynchronous Response : %@",error);
+            NSLog(@"This is Asynchronous Request Error : %@",error);
 
         }
        
@@ -129,6 +174,16 @@
     __block NSData* responseData = nil;
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        // useful for logging
+        if (data != nil) {
+            NSString* jsonResponse = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+            NSLog(@"This is Synchronous Succesfull Response : %@",jsonResponse);
+        } else{
+            NSLog(@"This is Synchronous Request Error : %@",error);
+            
+        }
+        
         responseData = data;
         //signal the wait operation by incrementing the semaphore
         dispatch_semaphore_signal(semaphore);
@@ -143,30 +198,12 @@
         jsonResponse = [[NSString alloc] initWithData:responseData encoding:NSASCIIStringEncoding];
     }
 
-    NSLog(@"This is synchronous Response : %@",jsonResponse);
     return jsonResponse;
 }
 
 
-// prepare the request to query the cluster point database
-- (void) prepareRequestToQueryJSON : (NSMutableURLRequest*) request urlString : (NSString*) url
-                           postLen : (NSString*) postLength postContent : (NSData*) postData
-                        httpMethod : (NSString*) methodName authRequired : (BOOL) isAuthRequired{
-    
-    [request setURL:[NSURL URLWithString:url]];
-    [request setHTTPMethod:methodName];
-    [request setValue:postLength forHTTPHeaderField:CONTENT_LENGTH_HEADER_FIELD];
-    [request setHTTPBody:postData];
-    
-    if (isAuthRequired) {
-        NSString* plainString = USER_CREDENTIALS;
-        NSData *plainData = [plainString dataUsingEncoding:NSUTF8StringEncoding];
-        NSString *base64String = [plainData base64EncodedStringWithOptions:0];
-        NSString* headerValue = [USER_CREDENTIALS_TYPE stringByAppendingString:base64String];
-        [request addValue:headerValue forHTTPHeaderField:AUTHORIZATION_HEADER_FIELD];
-    }
-   
-}
+/* ============================= METHODS WITH LOGIC OF SENDING SYNCHRONOUS/ASYNCHRONOUS REQUEST ENDS HERE ===================================== */
+
 
 
 

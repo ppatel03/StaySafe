@@ -93,6 +93,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOO-am-hYa">
                                 <rect key="frame" x="0.0" y="64" width="320" height="34"/>
                                 <state key="normal" title="Request for SafeWalk"/>
+                                <connections>
+                                    <action selector="onClickSafeWalkRequestButton:" destination="HnE-OG-I8v" eventType="touchUpInside" id="C90-x1-R0K"/>
+                                </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4ty-xQ-AVq">
                                 <rect key="frame" x="0.0" y="194" width="320" height="374"/>

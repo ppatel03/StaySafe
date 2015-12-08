@@ -11,7 +11,7 @@
 @interface JSONQueryModel : NSObject
 //json search query for fetching all the records
 //extern NSString *const SEARCH_QUERY_FOR_ALL_RECORDS;
-#define SEARCH_QUERY_FOR_ALL_RECORDS @"{\"query\":\"*\"}"
+#define SEARCH_QUERY_FOR_ALL_RECORDS @"{\"query\":\"*\",\"docs\":1000}"
 
 //get JSON formatted query to retreive all the records from the table
 -(NSString*) getJSONQueryForFetchingAllRecords;
@@ -24,6 +24,9 @@
 
 //get the  formatted query for text smses
 -(NSString*) getQueryForSendingTextSMS : (NSString*) phone  sms : (NSString*) message ;
+
+//get the query for safewalk update
+-(NSString*) getJSONQueryForSafeWalkInsert  : (NSString*) from long : (NSString*) to;
 
 
 @end

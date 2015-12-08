@@ -57,5 +57,14 @@
 // Get and store the contacts into contactList.
 - (void)storeContactsWithAddressBook:(ABAddressBookRef )addressBook;
 
+//  insert safewalk request data
+- (void) insertUserSafeWalkData : (NSString*) from to : (NSString*) to;
+
+//get the user based on phone number
+- (UserDetailVO*) getUserBasedOnPhoneNumber : (NSString*) phoneNumber;
+
+//check if the phone number exists in the contact list
+- (BOOL)doesContactUserExist:(NSMutableArray *)array byName:(NSString *)theName;
+
 
 @end

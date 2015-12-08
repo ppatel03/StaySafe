@@ -99,6 +99,17 @@
     [self.restAPIDAO makeRESTAPIcallToUpdaterUserLocation:query table:USER_DETAILS_DB_NAME];
 }
 
+//  insert safewalk request data
+- (void) insertUserSafeWalkData : (NSString*) from to : (NSString*) to{
+    
+    //fetches the json Query required for the cluster point server
+    NSString* query = [self.jsonModel getJSONQueryForSafeWalkInsert:from long:to];
+    
+    //call the rest api to perform asynchronous insert operation
+    [self.restAPIDAO makeRESTAPIcallToInsertUserSafeWalkData:query table: USER_SAFEWALK_DB_NAME];
+    
+}
+
 
 // aynchronous sending of SMSes to the list of users
 - (void) sendSMSToUsers : (NSMutableDictionary*) users sms : (NSString*) message {
