@@ -111,6 +111,9 @@
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zF3-PI-bYJ">
                                 <rect key="frame" x="0.0" y="179" width="320" height="389"/>
+                                <connections>
+                                    <outlet property="delegate" destination="XO7-9W-iby" id="Npb-5p-uO2"/>
+                                </connections>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lzS-U0-bOv">
                                 <rect key="frame" x="0.0" y="154" width="320" height="162"/>

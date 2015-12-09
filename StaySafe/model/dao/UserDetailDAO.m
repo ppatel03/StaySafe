@@ -62,7 +62,7 @@
     NSString* query = [self.jsonModel getJSONQueryForFetchingAllRecords];
     
     //calling the REST API layer
-    NSString* jsonString = [self.restAPIDAO makeRESTAPIcallForSearch:query table:USER_DETAILS_DB_NAME];
+    NSString* jsonString = [self.restAPIDAO makeRESTAPIcallForSearch:query table:USER_DETAILS_DB_NAME operation:SEARCH_OPERATION];
     
     //parse the json string into dicitonary
     NSMutableDictionary *jsonDictionary = [self.jsonModel getUsersDictionaryFromJson:jsonString];
@@ -89,12 +89,45 @@
     return users;
 }
 
+//  retrieves user detail record from the user_detail database based on userId
+- (UserDetailVO*) getUserFromUserId : (NSString*) userId {
+    
+    NSString* query = [self.jsonModel getJSONQueryForFetchingUserFromId:userId];
+    
+    //calling the REST API layer
+    NSString* jsonString = [self.restAPIDAO makeRESTAPIcallForSearch:query table:USER_DETAILS_DB_NAME operation:RETREIVE_OPERATION];
+    
+    //parse the json string into dicitonary
+    NSMutableDictionary *jsonDictionary = [self.jsonModel getUsersDictionaryFromJson:jsonString];
+    
+    //user fetched
+    UserDetailVO *user = [[UserDetailVO alloc] init];
+    
+    //using dictionary to store user details of the form --- id : UserDetailVo
+    if ([jsonDictionary isKindOfClass:[NSMutableDictionary class]]){
+        NSArray *userDictionaryArray = jsonDictionary[@"documents"];
+        if ([userDictionaryArray isKindOfClass:[NSArray class]]){
+            for (NSDictionary *dictionary in userDictionaryArray) {
+                
+                user.suid = [dictionary objectForKey:@"id"];
+                user.name = [dictionary objectForKey:@"name"];
+                user.email = [dictionary objectForKey:@"email"];
+                user.phone = [dictionary objectForKey:@"phone"];
+                user.latitude =  [[dictionary objectForKey:@"latitude"] doubleValue];
+                user.longitude =  [[dictionary objectForKey:@"longitude"] doubleValue];
+            }
+        }
+    }
+    
+    return user;
+}
+
 // fetch  all data related to safe walk
 - ( NSMutableDictionary *) getAllSafeWalkData   {
     NSString* query = [self.jsonModel getJSONQueryForFetchingAllRecords];
     
     //calling the REST API layer
-    NSString* jsonString = [self.restAPIDAO makeRESTAPIcallForSearch:query table:USER_SAFEWALK_DB_NAME];
+    NSString* jsonString = [self.restAPIDAO makeRESTAPIcallForSearch:query table:USER_SAFEWALK_DB_NAME operation:SEARCH_OPERATION];
     
     //parse the json string into dicitonary
     NSMutableDictionary *jsonDictionary = [self.jsonModel getUsersDictionaryFromJson:jsonString];

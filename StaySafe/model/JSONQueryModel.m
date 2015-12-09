@@ -74,4 +74,11 @@
     return query;
 }
 
+//get JSON formatted query to retreive user detail  record from based  on  user id
+-(NSString*) getJSONQueryForFetchingUserFromId : (NSString*) userId{
+     NSString* query =  @"{\"id\":\"id_value\"}";
+    query = [query stringByReplacingOccurrencesOfString:@"id_value" withString:userId];
+    return query;
+}
+
 @end

@@ -17,5 +17,6 @@
 @property double latitude;
 @property double longitude;
 @property NSNumber* distanceFromUser;
+@property NSMutableArray* coordinates;
 
 @end

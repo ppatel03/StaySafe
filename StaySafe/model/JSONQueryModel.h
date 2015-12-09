@@ -28,5 +28,8 @@
 //get the query for safewalk update
 -(NSString*) getJSONQueryForSafeWalkInsert  : (NSString*) from long : (NSString*) to;
 
+//get JSON formatted query to retreive user detail  record from based  on  user id
+-(NSString*) getJSONQueryForFetchingUserFromId : (NSString*) userId;
+
 
 @end

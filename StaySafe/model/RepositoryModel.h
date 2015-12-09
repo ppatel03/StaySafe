@@ -75,5 +75,8 @@
 //store the data containing safewalk related information
 - (void) storeSafeWalkRelatedInformation ;
 
+//retreives all the users details from the database
+-(UserDetailVO*) getUserInDBFromUserID : (NSString*) userID;
+
 
 @end

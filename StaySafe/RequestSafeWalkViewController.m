@@ -22,6 +22,10 @@
 
 NSString* currentUserIdForSafeWalk;
 UserDetailVO* currentUserForSafeWalk;
+UserDetailVO* currentlyWatchedUser;
+NSTimer* timer;
+bool isAnnotationShowingUpFirstTime;
+UIColor *currentColor;
 
 
 
@@ -45,14 +49,17 @@ UserDetailVO* currentUserForSafeWalk;
     
     //show requested users location on the Map
     UserDetailVO* firstUser = [self getFirstRandomUserFromDictionary];
+    
+    //adding the map view delegate to itself
+    [self.watchSafeWalkMapView.delegate   self];
 
     // show user on map
     [self showUserOnTheMap:firstUser.latitude long:firstUser.longitude];
-    
+
     //add annotation for those users
     [self addAnnotationForSafeWalkRequestedUsers];
     
-    
+   
     //assign the delegate to itself
     self.safeWalkRequestTableView.delegate = self;
     self.safeWalkRequestTableView.dataSource = self;
@@ -78,6 +85,13 @@ UserDetailVO* currentUserForSafeWalk;
     // current user data
     currentUserIdForSafeWalk = @"678713856";
     currentUserForSafeWalk = self.repository.users[currentUserIdForSafeWalk];
+    
+    
+    //flag for to show dropping pin  animation
+    isAnnotationShowingUpFirstTime = YES;
+    
+    //rdefault color
+    currentColor = [UIColor blueColor];
 }
 
 
@@ -121,6 +135,7 @@ UserDetailVO* currentUserForSafeWalk;
             nearbyUsersAnnotation.coordinate = location;
             nearbyUsersAnnotation.title = user.name;
             nearbyUsersAnnotation.subtitle = [@"Student ID : " stringByAppendingString:user.suid];
+            
             [safeWalkUsersLocation addObject:nearbyUsersAnnotation];
             
         }
@@ -178,6 +193,11 @@ UserDetailVO* currentUserForSafeWalk;
 
 //when a row cell is selected
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    //invalidate the current timer
+    [timer invalidate];
+    timer = nil;
+    
     UITableViewCell* cell = [self.safeWalkRequestTableView cellForRowAtIndexPath:indexPath];
     
     [self.watchSafeWalkButton setTitle:cell.textLabel.text forState:UIControlStateNormal];
@@ -197,8 +217,40 @@ UserDetailVO* currentUserForSafeWalk;
         UserDetailVO* requestedUser = [self.repository getUserBasedOnPhoneNumber:phoneNumberForSafeWalkRequest];
         
         if(requestedUser != nil){
+            //set it to currently watched user to be used by NSTimer
+            currentlyWatchedUser = requestedUser;
             
+            //show the selected user to the center of the Map
             [self showUserOnTheMap:requestedUser.latitude long:requestedUser.longitude];
+            
+            //current user's name
+            NSString* userName = currentUserForSafeWalk.name;
+            
+            //sms message
+            NSString* message = [@[userName, DEFAULT_WATCH_WALK_MESSAGE] componentsJoinedByString:@" "];
+            
+            //create the dictionary for sending SMS to these requested users since the current user is watching them walk
+            NSMutableDictionary* safewalkRequestingUserDictionary = [NSMutableDictionary dictionary];
+            [safewalkRequestingUserDictionary setObject:requestedUser forKey:requestedUser.suid];
+            
+            //take help of repository to send SMS
+            [self.repository sendSMSToUsers:safewalkRequestingUserDictionary sms:message];
+            
+            //generating random color to show on the map
+            CGFloat hue = ( arc4random() % 256 / 256.0 ); // 0.0 to 1.0
+            CGFloat saturation = ( arc4random() % 128 / 256.0 ) + 0.5; // 0.5 to 1.0, away from white
+            CGFloat brightness = ( arc4random() % 128 / 256.0 ) + 0.5; // 0.5 to 1.0, away from black
+            UIColor *color = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
+            currentColor = color;
+            
+            //assigning the timer
+            timer = [NSTimer scheduledTimerWithTimeInterval:20.0
+                                             target:self
+                                           selector:@selector(showUpdatedLocationOfUserPeriodically  )
+                                           userInfo:nil
+                                            repeats:YES];
+            
+
         }
         
         
@@ -207,9 +259,105 @@ UserDetailVO* currentUserForSafeWalk;
     
 }
 
+//control the timer to update the location
+-(void) showUpdatedLocationOfUserPeriodically  {
+    NSString* requestedUserID = currentlyWatchedUser.suid;
+    UserDetailVO* updatedRequestedUser = [self.repository getUserInDBFromUserID:requestedUserID];
+    //update the new currently watched user
+    currentlyWatchedUser = updatedRequestedUser;
+    //updating local dictionary
+    [safeWalkRequestUsersDict setObject:updatedRequestedUser forKey:requestedUserID];
+    // drawing lines for tracing the path of the user
+    [self showLines:updatedRequestedUser.coordinates];
+    //flag for to show dropping pin  animation
+    isAnnotationShowingUpFirstTime = NO;
+    //update the annotations on Mapview
+    [self addAnnotationForSafeWalkRequestedUsers];
+
+}
+
+
+// drawing lines for tracing the path of the user
+- (void)showLines : (NSMutableArray*) coodinates {
+    CLLocationCoordinate2D *pointsCoordinate = (CLLocationCoordinate2D *)malloc(sizeof(CLLocationCoordinate2D) * [coodinates count]);
+    
+    int count = 0;
+    
+    for (NSMutableArray* coordinate in coodinates) {
+        pointsCoordinate[count++] = CLLocationCoordinate2DMake([coordinate[0] doubleValue], [coordinate[1] doubleValue]);
+    }
+    
+    /*
+     pointsCoordinate[0] = CLLocationCoordinate2DMake(43.0412, -76.1195);
+     pointsCoordinate[1] = CLLocationCoordinate2DMake(43.04159, -76.1206);
+     pointsCoordinate[2] = CLLocationCoordinate2DMake(43.0413, -76.1299);
+    */
+    
+    MKPolyline *polyline = [MKPolyline polylineWithCoordinates:pointsCoordinate count:count];
+    free(pointsCoordinate);
+    [self.watchSafeWalkMapView addOverlay:polyline];
+    
+}
+
+// overlay for drawing the path on the Map
+- (MKPolylineRenderer *)mapView:(MKMapView *)mapView viewForOverlay:(id)overlay{
+    
+    // create a polylineView using polyline overlay object
+    MKPolylineRenderer *polylineView = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
+    
+    // Custom polylineView
+    polylineView.strokeColor =  currentColor;
+    polylineView.lineWidth = 2.0;
+    polylineView.alpha = 0.8;
+    
+    return polylineView;
+}
+
+
+// adding pins to the Map view
+- (MKAnnotationView *)mapView:(MKMapView *)mv viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    if([annotation isKindOfClass:[MKUserLocation class]])
+        return nil;
+    
+    NSString *annotationIdentifier = @"PinViewAnnotation";
+    
+    MKPinAnnotationView *pinView = (MKPinAnnotationView *) [self.watchSafeWalkMapView
+                                                            dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];    if (!pinView)
+    {
+        pinView = [[MKPinAnnotationView alloc]
+                    initWithAnnotation:annotation
+                    reuseIdentifier:annotationIdentifier] ;
+        // create color
+        UIColor *color = [UIColor colorWithRed:10/255.0
+                                         green:200/255.0
+                                          blue:15/255.0
+                                         alpha:1];
+        
+        [pinView setPinTintColor:color];
+       
+        pinView.animatesDrop = YES;
+        pinView.canShowCallout = YES;
+        UIImageView *imageIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lion-king" ]];
+        pinView.leftCalloutAccessoryView = imageIconView;
+        
+    }
+    else
+    {
+        
+        pinView.animatesDrop = isAnnotationShowingUpFirstTime;
+        
+        pinView.annotation = annotation;
+    }
+    return pinView;
+    
+}
+
+
+
 //load data into safe walk requested users array to populate into the dropdown
 -(void) loadDataIntoDropDownList{
-    NSMutableArray* safeRequestedUserIdArray = self.repository.safeWalkRequestedFromUsers[currentUserIdForSafeWalk];
+    NSMutableArray* safeRequestedUserIdArray = self.repository.safeWalkRequestedToUsers[currentUserIdForSafeWalk];
     for (NSString* userId in safeRequestedUserIdArray) {
         UserDetailVO* requestedUser =self.repository.users[userId];
         [self.safeWalkRequestUsersDict setObject:requestedUser  forKey:userId];

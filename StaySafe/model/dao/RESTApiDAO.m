@@ -26,8 +26,8 @@
 }
 
 
-//fetches the data from the Cluster point DB based on Search query
--(NSString*) makeRESTAPIcallForSearch:(NSString*)  query table : (NSString*) tableName{
+//fetches the data from the Cluster point DB based on Search/Retrieve query
+-(NSString*) makeRESTAPIcallForSearch:(NSString*)  query table : (NSString*) tableName operation: (NSString*) operationName{
    // query = @"{\"query\":\"*\",\"docs\":1000}";
     NSString *post = [NSString stringWithFormat:@"%@",query];
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
@@ -38,7 +38,7 @@
     
    
     NSString *url = [NSString stringWithFormat:@"%@%@%@%@%@%@%@", DOMAIN_URL, URL_DELIMITER,USER_ACCOUNT_NUMBER,URL_DELIMITER,
-                     tableName,URL_DELIMITER,SEARCH_OPERATION];
+                     tableName,URL_DELIMITER,operationName];
     
     //preparing the request Data to query Cluster point server
     [self prepareRequestToQueryJSON:request urlString:url postLen:postLength postContent:postData httpMethod:METHOD_POST authRequired:true];

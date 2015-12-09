@@ -98,6 +98,63 @@
     return self.users;
 }
 
+//retreives all the users details from the database
+-(UserDetailVO*) getUserInDBFromUserID : (NSString*) userID{
+    UserDetailVO* oldUser = self.users[userID];
+    
+    //calling the REST API layer
+    UserDetailVO* updatedUser = [self.userDetailDAO getUserFromUserId:userID];
+    
+    //copy the old coordinate data
+    updatedUser.coordinates = oldUser.coordinates;
+    
+    //update coordinate Data
+    updatedUser = [self updateCoordinateData:oldUser newUser:updatedUser];
+    
+    //copy the new user details into users if available - THIS IS OBVIOUS
+    if (self.users[userID] != nil) {
+        [self.users setObject:updatedUser forKey:userID];
+    }
+    //copy the new user details into nearby users if available
+    if (self.nearbyUsers[userID] != nil) {
+        [self.nearbyUsers setObject:updatedUser forKey:userID];
+    }
+   
+    return updatedUser;
+}
+
+//updates the coordinate data of the user
+- (UserDetailVO*) updateCoordinateData : (UserDetailVO*) oldUser newUser : (UserDetailVO*) updatedUser{
+    //storing cordinate data if location of user is changed make sure you are not storing the same location
+    if (!(oldUser.latitude == updatedUser.latitude && oldUser.longitude == updatedUser.longitude))
+    {
+        NSMutableArray* OldCoordinate = [[NSMutableArray alloc]  init] ;
+        [OldCoordinate addObject:[NSNumber numberWithDouble :oldUser.latitude]];
+        [OldCoordinate addObject:[NSNumber numberWithDouble :oldUser.longitude]];
+        
+        
+        NSMutableArray* coordinate = [[NSMutableArray alloc]  init] ;
+        [coordinate addObject:[NSNumber numberWithDouble : updatedUser.latitude]];
+        [coordinate addObject:[NSNumber numberWithDouble : updatedUser.longitude]];
+        
+        
+        if(updatedUser.coordinates == nil){
+            NSMutableArray* coordinates = [[NSMutableArray alloc]  init] ;
+            [coordinates addObject:OldCoordinate];
+            [coordinates addObject:coordinate];
+            updatedUser.coordinates = coordinates;
+            
+        } else{
+            NSMutableArray* coordinates = updatedUser.coordinates;
+            [coordinates addObject:coordinate];
+            updatedUser.coordinates = coordinates;
+            
+        }
+    }
+    
+    return updatedUser;
+}
+
 
 
 

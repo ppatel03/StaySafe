@@ -17,4 +17,5 @@
 @synthesize latitude;
 @synthesize longitude;
 @synthesize distanceFromUser;
+@synthesize coordinates;
 @end

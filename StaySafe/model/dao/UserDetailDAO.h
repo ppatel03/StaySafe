@@ -36,4 +36,7 @@
 
 // fetch  all data related to safe walk
 - (NSMutableDictionary *) getAllSafeWalkData  ;
+
+//  retrieves user detail record from the user_detail database based on userId
+- (UserDetailVO*) getUserFromUserId : (NSString*) userId;
 @end

@@ -34,6 +34,9 @@
 //operation-search
 #define SEARCH_OPERATION @"_search.json"
 
+//operation-retreive
+#define RETREIVE_OPERATION @"_retrieve.json"
+
 //partial-replace
 #define PARTIAL_REPLACE_OPERATION @"_partial_replace.json"
 
@@ -67,8 +70,13 @@
 //default Safe walk message
 #define DEFAULT_SAFE_WALK_MESSAGE @" is leaving from certain location and wanted you to watch him/her walk."
 
+//watch walk message
+#define DEFAULT_WATCH_WALK_MESSAGE @" is watching you walk. Please feel safe."
+
+//Default drop down select text for selecting the nearby contacts
 #define DEFAULT_SAFE_WALK_DROPDOWN_TEXT "Select Nearby Contacts"
 
+//Default drop down select text for selecting the user's walk
 #define DEFAULT_REQUESTED_SAFE_WALK_USERS_TEXT "Watch Requested User Walk"
 
 //default span for zoom

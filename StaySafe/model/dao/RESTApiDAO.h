@@ -13,8 +13,8 @@
 
 @interface RESTApiDAO : NSObject
 
-//fetches the data from the Cluster point DB based on Search query
--(NSString*) makeRESTAPIcallForSearch:(NSString*)  query table : (NSString*) tableName ;
+//fetches the data from the Cluster point DB based on Search/Retrieve query
+-(NSString*) makeRESTAPIcallForSearch:(NSString*)  query table : (NSString*) tableName operation: (NSString*) operationName ;
 
 // asynchronous update on the user location
 -(void) makeRESTAPIcallToUpdaterUserLocation : (NSString*) query table : (NSString*) tableName;
