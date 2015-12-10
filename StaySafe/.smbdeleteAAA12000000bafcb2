@@ -18,15 +18,23 @@ NSString* const imagePath = @"../images/";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.    
-   
+    // Do any additional setup after loading the view.
+    
+    //load the defaults in the repository
+    [self.repository storeDefaultLatitudeAndLongitude];
+    
+    //call the repository to retreive the user details
+    [self.repository getAllUserDetails];
+    
+    //loading registration view controller
+    NSString * storyboardName = @"Main";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+    RegistrationViewController * viewController = [storyboard instantiateViewControllerWithIdentifier:@"RegistrationViewController"];
+    [viewController  setRepository:self.repository];
+    
+ [self presentViewController:viewController animated:YES completion:nil];
 }
 
-
-//set by RegistrationViewcontroller in order to have a single repository instance
-- (void) setRepository:(RepositoryModel *)repository{
-    _repository = repository;
-}
 
 
 - (void)didReceiveMemoryWarning {
@@ -45,7 +53,7 @@ NSString* const imagePath = @"../images/";
     NSLog( @"Transition via segue: '%@'", segue.identifier);
     
     [super prepareForSegue:segue sender:sender];
-    
+   
     
     if([@"broadcast" caseInsensitiveCompare: segue.identifier] == NSOrderedSame  ){
         // pick up destination view controller from segue object - broadcast
@@ -63,5 +71,16 @@ NSString* const imagePath = @"../images/";
 - (IBAction)shareIconButtonAction:(id)sender {
 }
 
-
+// We override the default auto-generated getter for property model (which just
+// returns the current value of ivar _model;), so we can do LAZY INSTANTIATION
+// of our model object of class Model; doing lazy instantiation in getters
+// is good practice, as objects won't be created until they are needed).  Note
+// that we must use ivar _model here (using self.model would cause recursive call!)
+- (RepositoryModel *) repository
+{
+    if (!_repository)
+        _repository = [[RepositoryModel alloc] init];
+    
+    return _repository;
+}
 @end

@@ -22,7 +22,7 @@
 // asynchronous sms sending to the user
 -(void) makeRESTAPIcallToSendSMS : (NSString*) query ;
 
-// asynchronous insert for safewalk db
--(void) makeRESTAPIcallToInsertUserSafeWalkData : (NSString*) query table : (NSString*) tableName;
+// asynchronous insert into db
+-(void) makeRESTAPIcallToInsertData : (NSString*) query table : (NSString*) tableName;
 
 @end

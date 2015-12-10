@@ -66,7 +66,7 @@ UserDetailVO* currentUser;
     //default latitude and longitude - incase GPS is not working
     safeWalkLatitude = [self.repository defaultLatitude];
     safeWalkLongitude = [self.repository defaultLongitude];
-    currentUserId = @"678713856";
+    currentUserId = [self.repository.currentUser suid];
     currentUser = self.repository.users[currentUserId];
 }
 

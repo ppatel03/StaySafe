@@ -31,5 +31,9 @@
 //get JSON formatted query to retreive user detail  record from based  on  user id
 -(NSString*) getJSONQueryForFetchingUserFromId : (NSString*) userId;
 
+//get the query for user detail insert
+-(NSString*) getJSONQueryForUserInsert : (NSString*)suid name : (NSString*) name email : (NSString*) email
+                                 phone : (NSString*) phone latitude : (double) latitude longitude : (double) longitude;
+
 
 @end

@@ -85,7 +85,7 @@ double latitude, longitude;
     longitude = location.coordinate.longitude;
     
     //update the new location for the user asynchronous location
-    NSString* userId = @"678713856";
+    NSString* userId = [self.repository.currentUser suid];
     [self.repository updateUserLocation:userId lat:latitude long:longitude];
     
     //show the user on the Map with necessary coordinate configs

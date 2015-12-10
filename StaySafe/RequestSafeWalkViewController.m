@@ -83,7 +83,7 @@ UIColor *currentColor;
     safeWalkUsers = [[NSMutableArray alloc]  init];
     
     // current user data
-    currentUserIdForSafeWalk = @"678713856";
+    currentUserIdForSafeWalk = [self.repository.currentUser suid];
     currentUserForSafeWalk = self.repository.users[currentUserIdForSafeWalk];
     
     
@@ -377,6 +377,8 @@ UIColor *currentColor;
         return nil;
     }
 }
+
+
 
 // Dispose of any resources that can be recreated.
 - (void)didReceiveMemoryWarning {

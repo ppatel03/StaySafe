@@ -35,9 +35,6 @@
 @synthesize safeWalkRequestedFromUsers;
 //getters and setters generators for dictionary of safewalk requested To users
 @synthesize safeWalkRequestedToUsers;
-//current logged in user
-@synthesize currentUser;
-
 
 
 //default constructor
@@ -45,8 +42,6 @@
 {
     if ( self = [super init] )
     {
-        //initialize current logged in user
-        currentUser = [[UserDetailVO alloc] init];
         // intialize the dictionary for nearby users
         nearbyUsers = [NSMutableDictionary dictionary];
         // intialize the dictionary for safewalk requested From users
@@ -337,22 +332,7 @@
 
 }
 
-//saving data into NSUserDefaults to avoid user logging in again
-- (void) saveData : (UserDetailVO*) user{
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setObject:user.suid forKey:@"user"];
-    UserDetailVO* registredUser = self.users[user.suid];
-    currentUser = registredUser;
-}
 
-//load data from NSUserDefaults to avoid user registering in or login in again
--(UserDetailVO*) loadDataFromPList {
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *userId = [prefs stringForKey:@"user"];
-    UserDetailVO* user = self.users[userId];
-    currentUser = user;
-    return user;
-}
 
 
 @end

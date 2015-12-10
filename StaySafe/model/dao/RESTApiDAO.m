@@ -72,8 +72,8 @@
     
 }
 
-// asynchronous insert for safewalk db
--(void) makeRESTAPIcallToInsertUserSafeWalkData : (NSString*) query table : (NSString*) tableName{
+// asynchronous insert into  db
+-(void) makeRESTAPIcallToInsertData : (NSString*) query table : (NSString*) tableName{
     NSString *post = [NSString stringWithFormat:@"%@",query];
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     

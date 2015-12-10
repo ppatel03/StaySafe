@@ -43,9 +43,6 @@
 //holds the contact list of the users
 @property (strong,nonatomic) NSMutableArray *contactList;
 
-//get the current user
-@property (strong, nonatomic) UserDetailVO* currentUser;
-
 
 //default getters and setters
 @property  double defaultLatitude;
@@ -84,10 +81,5 @@
 //  insert user detail data
 - (void) insertUserUserDetailData :( UserDetailVO*) user;
 
-//load data from plist
--(UserDetailVO*) loadDataFromPList;
-
-//saving data into plist
-- (void) saveData : (UserDetailVO*) user ;
 
 @end

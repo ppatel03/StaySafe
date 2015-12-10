@@ -1,0 +1,41 @@
+//
+//  RegistrationViewController.m
+//  StaySafe
+//
+//  Created by Prashant Mahesh Patel on 12/9/15.
+//  Copyright © 2015 Prashant Mahesh Patel. All rights reserved.
+//
+
+#import "RegistrationViewController.h"
+
+@interface RegistrationViewController ()
+
+@end
+
+@implementation RegistrationViewController
+
+//set by IconPageViewcontroller in order to have a single repository instance
+- (void) setRepository:(RepositoryModel *)repository{
+    _repository = repository;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+
+
+- (IBAction)onClickSendSMSButton:(id)sender {
+}
+
+- (IBAction)onClickRegisterButton:(id)sender {
+    
+}
+@end

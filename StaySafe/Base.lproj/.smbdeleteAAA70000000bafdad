@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="7XQ-HI-S9g">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <scenes>
+        <!--Icon Page View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="IconPageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qlV-g9-m8s">
+                                <rect key="frame" x="200" y="125" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="JSY-Oq-0zj"/>
+                                    <constraint firstAttribute="height" constant="100" id="Prd-Gk-xM0"/>
+                                </constraints>
+                                <state key="normal" image="icon-broadcast"/>
+                                <connections>
+                                    <segue destination="zCI-rV-FXA" kind="push" identifier="broadcast" id="eNV-TP-ckN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vXf-aZ-2Ku">
+                                <rect key="frame" x="20" y="315" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="6hO-0U-ZOn"/>
+                                    <constraint firstAttribute="width" constant="100" id="ZXk-lW-FPE"/>
+                                </constraints>
+                                <state key="normal" image="icon-emergency"/>
+                                <connections>
+                                    <segue destination="vGf-s9-KlG" kind="push" id="KeU-DE-eUw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jdm-JX-wbG">
+                                <rect key="frame" x="200" y="315" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="f5n-Pb-Fah"/>
+                                    <constraint firstAttribute="width" constant="100" id="wrV-oo-Blr"/>
+                                </constraints>
+                                <state key="normal" image="icon-safewalk"/>
+                                <connections>
+                                    <segue destination="HnE-OG-I8v" kind="push" identifier="safewalk" id="Yax-SU-wQO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GXK-rp-1zn">
+                                <rect key="frame" x="20" y="125" width="100" height="100"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="S16-Io-dFS"/>
+                                    <constraint firstAttribute="width" constant="100" id="qpj-x8-jOJ"/>
+                                </constraints>
+                                <state key="normal" image="icon-share"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="mS0-Y0-6xf" appends="YES" id="QPr-6a-LHF"/>
+                                    <segue destination="8Ef-Pn-LiT" kind="push" id="don-H6-Fpy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="jdm-JX-wbG" firstAttribute="top" secondItem="qlV-g9-m8s" secondAttribute="bottom" constant="90" id="bI1-zX-uLU"/>
+                            <constraint firstItem="vXf-aZ-2Ku" firstAttribute="top" secondItem="jdm-JX-wbG" secondAttribute="top" id="muz-os-XeB"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="mS0-Y0-6xf" appends="YES" id="gmd-78-zFZ"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" id="U3O-Wb-0gW"/>
+                    <connections>
+                        <outlet property="broadcastIconButton" destination="qlV-g9-m8s" id="SHn-rH-XuA"/>
+                        <outlet property="helpIconButton" destination="vXf-aZ-2Ku" id="nHY-pl-LKf"/>
+                        <outlet property="shareIconButton" destination="GXK-rp-1zn" id="ICh-Uw-Me9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="mS0-Y0-6xf"/>
+            </objects>
+            <point key="canvasLocation" x="50" y="419"/>
+        </scene>
+        <!--Registration View Controller-->
+        <scene sceneID="1YK-M6-Xvl">
+            <objects>
+                <viewController storyboardIdentifier="RegistrationViewController" id="WHf-bL-HO5" customClass="RegistrationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="J2d-dd-Ns2"/>
+                        <viewControllerLayoutGuide type="bottom" id="9q8-Kq-YYV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="registrationController" id="Pib-UB-rvu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Student ID" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dpJ-S8-X9y">
+                                <rect key="frame" x="88" y="181" width="144" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Phone" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VTw-n0-u9A">
+                                <rect key="frame" x="88" y="231" width="144" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Lg-hz-Wbq">
+                                <rect key="frame" x="94" y="279" width="138" height="30"/>
+                                <state key="normal" title="Send SMS For Code"/>
+                                <connections>
+                                    <action selector="onClickSendSMSButton:" destination="WHf-bL-HO5" eventType="touchUpInside" id="04b-mH-xpS"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Code" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wqd-pG-8lk">
+                                <rect key="frame" x="90" y="334" width="143" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKB-fX-QBF">
+                                <rect key="frame" x="114" y="412" width="93" height="30"/>
+                                <state key="normal" title="Register"/>
+                                <connections>
+                                    <action selector="onClickRegisterButton:" destination="WHf-bL-HO5" eventType="touchUpInside" id="YFn-yK-O1k"/>
+                                    <segue destination="BYZ-38-t0r" kind="push" identifier="register" id="1yZ-da-cqu"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="39f-LT-8b8">
+                                <rect key="frame" x="91" y="83" width="144" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="WHf-bL-HO5" id="7io-4c-A09"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" borderStyle="roundedRect" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iJC-jo-PSW">
+                                <rect key="frame" x="90" y="130" width="144" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="WHf-bL-HO5" id="PPE-cP-oWC"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="I7B-4f-Efb" appends="YES" id="uJj-wy-vOF"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" id="UhJ-ge-HEA"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="iJC-jo-PSW" id="44a-ZY-XcZ"/>
+                        <outlet property="nameTextField" destination="39f-LT-8b8" id="4jz-2c-3rh"/>
+                        <outlet property="phoneTextField" destination="VTw-n0-u9A" id="GKn-zI-NaW"/>
+                        <outlet property="registerButton" destination="nKB-fX-QBF" id="yE0-32-XvF"/>
+                        <outlet property="sendSMSButton" destination="4Lg-hz-Wbq" id="Jje-bA-Ie6"/>
+                        <outlet property="userIdUITextField" destination="dpJ-S8-X9y" id="H3H-dv-PG6"/>
+                        <outlet property="verficationCodeTextField" destination="Wqd-pG-8lk" id="SXP-st-uI0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ks-Ay-0VU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="I7B-4f-Efb"/>
+            </objects>
+            <point key="canvasLocation" x="-98" y="1063"/>
+        </scene>
+        <!--Safe Walk Requests-->
+        <scene sceneID="L4C-xQ-WqY">
+            <objects>
+                <viewController id="XO7-9W-iby" customClass="RequestSafeWalkViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="n9t-e6-8xH"/>
+                        <viewControllerLayoutGuide type="bottom" id="0zk-pa-CEI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jcI-RK-GcP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number of Requests : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKd-AA-UwY">
+                                <rect key="frame" x="20" y="88" width="171" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VeD-Ng-xq5">
+                                <rect key="frame" x="0.0" y="125" width="320" height="28"/>
+                                <state key="normal" title="Watch Requested User Walk"/>
+                                <connections>
+                                    <action selector="onSelectWatchSafeWalkButton:" destination="XO7-9W-iby" eventType="touchUpInside" id="NZT-h3-UZ4"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aee-HX-9b8">
+                                <rect key="frame" x="207" y="88" width="29" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zF3-PI-bYJ">
+                                <rect key="frame" x="0.0" y="179" width="320" height="389"/>
+                                <connections>
+                                    <outlet property="delegate" destination="XO7-9W-iby" id="Npb-5p-uO2"/>
+                                </connections>
+                            </mapView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lzS-U0-bOv">
+                                <rect key="frame" x="0.0" y="154" width="320" height="162"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Safe Walk Requests" id="yNB-GT-Ead"/>
+                    <connections>
+                        <outlet property="numberOfSafeWalkRequestsLabel" destination="Aee-HX-9b8" id="u8B-V1-5Dz"/>
+                        <outlet property="safeWalkRequestTableView" destination="lzS-U0-bOv" id="UcI-gm-2gN"/>
+                        <outlet property="watchSafeWalkButton" destination="VeD-Ng-xq5" id="q1p-MY-dbH"/>
+                        <outlet property="watchSafeWalkMapView" destination="zF3-PI-bYJ" id="BLy-SS-fy6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XHa-xh-s6V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="804" y="1170"/>
+        </scene>
+        <!--Safe Walk-->
+        <scene sceneID="cSM-t6-PHH">
+            <objects>
+                <viewController id="HnE-OG-I8v" customClass="SafeWalkViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8Bs-p8-CjO"/>
+                        <viewControllerLayoutGuide type="bottom" id="jcb-Ul-vEM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lq7-qg-Weg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOO-am-hYa">
+                                <rect key="frame" x="0.0" y="152" width="320" height="34"/>
+                                <state key="normal" title="Request for SafeWalk"/>
+                                <connections>
+                                    <action selector="onClickSafeWalkRequestButton:" destination="HnE-OG-I8v" eventType="touchUpInside" id="C90-x1-R0K"/>
+                                </connections>
+                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4ty-xQ-AVq">
+                                <rect key="frame" x="0.0" y="194" width="320" height="374"/>
+                            </mapView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v32-GJ-BXx">
+                                <rect key="frame" x="0.0" y="143" width="320" height="295"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUI-a6-PaK">
+                                <rect key="frame" x="0.0" y="114" width="320" height="30"/>
+                                <state key="normal" title="Select Nearby Contacts"/>
+                                <connections>
+                                    <action selector="contactTableViewButtonAction:" destination="HnE-OG-I8v" eventType="touchUpInside" id="hR2-WD-HBd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2P-Z9-FSQ">
+                                <rect key="frame" x="5" y="72" width="309" height="34"/>
+                                <state key="normal" title="View SafeWalk Requests"/>
+                                <connections>
+                                    <segue destination="XO7-9W-iby" kind="push" identifier="requestSafeWalk" id="bYe-Lv-sjK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Safe Walk" id="mVa-i5-RTF"/>
+                    <connections>
+                        <outlet property="contactTableViewButton" destination="TUI-a6-PaK" id="53p-FG-YU1"/>
+                        <outlet property="contactsTableView" destination="v32-GJ-BXx" id="4nC-XR-AMz"/>
+                        <outlet property="safewalkMapView" destination="4ty-xQ-AVq" id="4bw-m8-xkb"/>
+                        <outlet property="safewalkRequestButton" destination="NOO-am-hYa" id="NtK-VF-G6f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bvq-7h-n4v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1162" y="1178"/>
+        </scene>
+        <!--Share-->
+        <scene sceneID="0zx-Ty-aHe">
+            <objects>
+                <viewController id="8Ef-Pn-LiT" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YGg-i1-9al"/>
+                        <viewControllerLayoutGuide type="bottom" id="8W7-9t-Fou"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wBU-bf-f6s">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Share" id="4SJ-le-5IY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YO4-VG-Uu6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="991" y="-91"/>
+        </scene>
+        <!--Emergency-->
+        <scene sceneID="4Tn-NB-GAv">
+            <objects>
+                <viewController id="vGf-s9-KlG" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lpx-h4-Raw"/>
+                        <viewControllerLayoutGuide type="bottom" id="NLb-eh-gik"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eVT-rq-N4Q">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Emergency" id="QWr-NP-3DR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xR9-Yw-vNa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1538" y="1183"/>
+        </scene>
+        <!--Broadcast-->
+        <scene sceneID="3dp-aq-y6F">
+            <objects>
+                <viewController id="zCI-rV-FXA" customClass="BroadcastViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QVr-cF-pwq"/>
+                        <viewControllerLayoutGuide type="bottom" id="raw-Zw-vaj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TZT-SX-hhz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4NW-nu-WYt">
+                                <rect key="frame" x="0.0" y="221" width="320" height="347"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahV-71-NO9">
+                                <rect key="frame" x="119" y="159" width="83" height="30"/>
+                                <state key="normal" title="Alert Users"/>
+                                <connections>
+                                    <action selector="onClickBroadcastAlertButton:" destination="zCI-rV-FXA" eventType="touchUpInside" id="dCO-bP-A6a"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="      Alert Message from StaySafe App" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aZf-sj-Sgx">
+                                <rect key="frame" x="31" y="106" width="269" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="zCI-rV-FXA" id="r6f-9t-9KB"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4NW-nu-WYt" firstAttribute="bottom" secondItem="raw-Zw-vaj" secondAttribute="top" id="LVs-kf-tBi"/>
+                            <constraint firstAttribute="trailing" secondItem="4NW-nu-WYt" secondAttribute="trailing" id="SZT-Qj-xTD"/>
+                            <constraint firstItem="4NW-nu-WYt" firstAttribute="top" secondItem="QVr-cF-pwq" secondAttribute="bottom" constant="157" id="ivA-U6-rzz"/>
+                            <constraint firstItem="4NW-nu-WYt" firstAttribute="leading" secondItem="TZT-SX-hhz" secondAttribute="leading" id="vEH-5U-ZMW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Broadcast" id="HFC-2d-Gi6"/>
+                    <connections>
+                        <outlet property="broadcastAlertButton" destination="ahV-71-NO9" id="9p1-5Y-gOm"/>
+                        <outlet property="broadcastMapView" destination="4NW-nu-WYt" id="ttG-Ro-MHk"/>
+                        <outlet property="broadcastMessageText" destination="aZf-sj-Sgx" id="QVN-yO-aXU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xLn-Fb-22W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1538" y="543"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="PCt-gZ-7zY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7XQ-HI-S9g" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Bh-g2-UvH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="WHf-bL-HO5" kind="relationship" relationship="rootViewController" id="1uH-pA-DOM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iNU-hh-vCf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-520" y="1111"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon-broadcast" width="512" height="512"/>
+        <image name="icon-emergency" width="512" height="512"/>
+        <image name="icon-safewalk" width="337" height="337"/>
+        <image name="icon-share" width="270" height="270"/>
+    </resources>
+</document>

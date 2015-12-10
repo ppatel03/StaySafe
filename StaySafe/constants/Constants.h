@@ -79,6 +79,9 @@
 //Default drop down select text for selecting the user's walk
 #define DEFAULT_REQUESTED_SAFE_WALK_USERS_TEXT "Watch Requested User Walk"
 
+//Default SMS text for user verfication
+#define DEFAULT_VERIFICATION_USERS_TEXT "Your verfication code is : "
+
 //default span for zoom
 #define THE_SPAN 0.02f;
 

@@ -39,4 +39,8 @@
 
 //  retrieves user detail record from the user_detail database based on userId
 - (UserDetailVO*) getUserFromUserId : (NSString*) userId;
+
+//insert user detail data
+- (void) insertUserDataIntoDB: (NSString*)suid name : (NSString*) name email : (NSString*) email
+                       phone : (NSString*) phone latitude : (double) latitude longitude :  (double)  longitude;
 @end

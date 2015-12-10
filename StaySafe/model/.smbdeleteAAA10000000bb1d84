@@ -67,13 +67,12 @@
 //get the query for user detail insert
 -(NSString*) getJSONQueryForUserInsert : (NSString*)suid name : (NSString*) name email : (NSString*) email
                                  phone : (NSString*) phone latitude : (double) latitude longitude : (double) longitude{
-    NSString* query =  @"{\"id\":\"id_value\",\"name\":\"name_value\",\"email\":\"email_value\",\"phone\":\"phone_value\",\"latitude\":\"latitude_value\",\"longitude\":\"longitude_value\"}";
+    NSString* query =  @"{\"id\":\"id_value\",\"email\":\"email_value\",\"phone\":\"phone_value\",\"latitude\":\"latitude_value\",\"longitude\":\"longitude_value\"}";
     NSNumber *latitudeNumber = [NSNumber numberWithDouble:latitude];
     NSNumber *longitudeNumber = [NSNumber numberWithDouble:longitude];
     
     query = [query stringByReplacingOccurrencesOfString:@"id_value" withString:suid];
     query = [query stringByReplacingOccurrencesOfString:@"email_value" withString:email ];
-    query = [query stringByReplacingOccurrencesOfString:@"name_value" withString:name ];
     query = [query stringByReplacingOccurrencesOfString:@"phone_value" withString:phone ];
     query = [query stringByReplacingOccurrencesOfString:@"latitude_value" withString:[latitudeNumber stringValue]];
     query = [query stringByReplacingOccurrencesOfString:@"longitude_value" withString:[longitudeNumber stringValue]];

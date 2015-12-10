@@ -164,7 +164,7 @@
     NSString* query = [self.jsonModel getJSONQueryForUserInsert :  suid name:name  email:email phone:phone latitude:latitude longitude:longitude];
     
     //call the rest api to perform asynchronous insert operation
-    [self.restAPIDAO makeRESTAPIcallToInsertData:query table: USER_DETAILS_DB_NAME];
+    [self.restAPIDAO makeRESTAPIcallToInsertData:query table: USER_SAFEWALK_DB_NAME];
     
 }
 
