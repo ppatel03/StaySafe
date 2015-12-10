@@ -90,4 +90,7 @@
 //saving data into plist
 - (void) saveData : (UserDetailVO*) user ;
 
+//update the user profile
+- (void) updateCurrentUser : (UserDetailVO*) updatedUser;
+
 @end

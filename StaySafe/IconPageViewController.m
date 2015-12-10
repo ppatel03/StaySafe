@@ -57,6 +57,11 @@ NSString* const imagePath = @"../images/";
         self.safewalkViewController = segue.destinationViewController;
         [self.safewalkViewController setRepository:self.repository];
         
+    }else if([@"update" caseInsensitiveCompare: segue.identifier] == NSOrderedSame  ){
+        // pick up destination view controller from segue object - broadcast
+        self.updateProfileViewController = segue.destinationViewController;
+        [self.updateProfileViewController setRepository:self.repository];
+        
     }
 }
 

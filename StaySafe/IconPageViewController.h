@@ -9,6 +9,7 @@
 #import "model/RepositoryModel.h"
 #import "BroadcastViewController.h"
 #import "SafeWalkViewController.h"
+#import "UpdateProfileViewController.h"
 
 
 @interface IconPageViewController : UIViewController
@@ -24,6 +25,7 @@
 - (void) setRepository:(RepositoryModel *)repository;
 @property (weak, nonatomic) BroadcastViewController  *broadcastViewController;
 @property (weak, nonatomic) SafeWalkViewController  *safewalkViewController;
+@property (weak, nonatomic) UpdateProfileViewController  *updateProfileViewController;
 
 - (IBAction)shareIconButtonAction:(id)sender;
 

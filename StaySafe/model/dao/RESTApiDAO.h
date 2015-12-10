@@ -16,13 +16,15 @@
 //fetches the data from the Cluster point DB based on Search/Retrieve query
 -(NSString*) makeRESTAPIcallForSearch:(NSString*)  query table : (NSString*) tableName operation: (NSString*) operationName ;
 
-// asynchronous update on the user location
--(void) makeRESTAPIcallToUpdaterUserLocation : (NSString*) query table : (NSString*) tableName;
+// asynchronous update on the user' details
+-(void) makeRESTAPIcallToUpdateUser : (NSString*) query table : (NSString*) tableName;
 
 // asynchronous sms sending to the user
 -(void) makeRESTAPIcallToSendSMS : (NSString*) query ;
 
 // asynchronous insert into db
 -(void) makeRESTAPIcallToInsertData : (NSString*) query table : (NSString*) tableName;
+
+
 
 @end

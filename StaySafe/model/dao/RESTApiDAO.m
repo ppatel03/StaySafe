@@ -50,8 +50,8 @@
     
 }
 
-// asynchronous update on the user location
--(void) makeRESTAPIcallToUpdaterUserLocation : (NSString*) query table : (NSString*) tableName{
+// asynchronous update on the user' details
+-(void) makeRESTAPIcallToUpdateUser : (NSString*) query table : (NSString*) tableName{
     NSString *post = [NSString stringWithFormat:@"%@",query];
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     

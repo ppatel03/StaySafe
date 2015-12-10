@@ -58,7 +58,7 @@
                                 </constraints>
                                 <state key="normal" image="icon-share"/>
                                 <connections>
-                                    <segue destination="8Ef-Pn-LiT" kind="push" id="don-H6-Fpy"/>
+                                    <segue destination="8Ef-Pn-LiT" kind="push" identifier="update" id="don-H6-Fpy"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -271,7 +271,7 @@
         <!--Share-->
         <scene sceneID="0zx-Ty-aHe">
             <objects>
-                <viewController id="8Ef-Pn-LiT" sceneMemberID="viewController">
+                <viewController id="8Ef-Pn-LiT" customClass="UpdateProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YGg-i1-9al"/>
                         <viewControllerLayoutGuide type="bottom" id="8W7-9t-Fou"/>
@@ -279,13 +279,49 @@
                     <view key="view" contentMode="scaleToFill" id="wBU-bf-f6s">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mJu-DJ-6fC">
+                                <rect key="frame" x="136" y="277" width="147" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Yd-9f-aPI">
+                                <rect key="frame" x="27" y="144" width="55" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBf-Gr-e1V">
+                                <rect key="frame" x="27" y="286" width="55" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7c4-Kw-sHz">
+                                <rect key="frame" x="129" y="403" width="51" height="30"/>
+                                <state key="normal" title="Update"/>
+                                <connections>
+                                    <action selector="onClickUpdateButtton:" destination="8Ef-Pn-LiT" eventType="touchUpInside" id="5ox-fa-fTY"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cW3-pf-iz1">
+                                <rect key="frame" x="136" y="140" width="147" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Share" id="4SJ-le-5IY"/>
+                    <connections>
+                        <outlet property="updateButton" destination="7c4-Kw-sHz" id="PNd-Wc-jAw"/>
+                        <outlet property="updateEmailTextField" destination="mJu-DJ-6fC" id="UgD-N2-Wwb"/>
+                        <outlet property="updateNameTextField" destination="cW3-pf-iz1" id="qjB-jg-AYI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YO4-VG-Uu6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="991" y="-91"/>
+            <point key="canvasLocation" x="845" y="-92"/>
         </scene>
         <!--Emergency-->
         <scene sceneID="4Tn-NB-GAv">

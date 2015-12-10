@@ -35,5 +35,8 @@
 -(NSString*) getJSONQueryForUserInsert : (NSString*)suid name : (NSString*) name email : (NSString*) email
                                  phone : (NSString*) phone latitude : (double) latitude longitude : (double) longitude;
 
+//get the query for user profile update
+-(NSString*) getJSONQueryForUserProfileUpdate : (NSString*) userId name : (NSString*) name email : (NSString*) email;
+
 
 @end

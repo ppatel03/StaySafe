@@ -51,6 +51,15 @@
     return query;
 }
 
+//get the query for user profile update
+-(NSString*) getJSONQueryForUserProfileUpdate : (NSString*) userId name : (NSString*) name email : (NSString*) email {
+    NSString* query =  @"{\"id\":\"id_value\",\"name\":\"name_value\",\"email\":\"email_value\"}";
+    query = [query stringByReplacingOccurrencesOfString:@"id_value" withString:userId];
+    query = [query stringByReplacingOccurrencesOfString:@"name_value" withString:name];
+    query = [query stringByReplacingOccurrencesOfString:@"email_value" withString:email];
+    return query;
+}
+
 //get the query for safewalk update
 -(NSString*) getJSONQueryForSafeWalkInsert : (NSString*) from long : (NSString*) to{
     NSString* query =  @"{\"id\":\"id_value\",\"from\":\"from_value\",\"to\":\"to_value\"}";

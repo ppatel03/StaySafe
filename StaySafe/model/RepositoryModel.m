@@ -207,6 +207,18 @@
     [self.users setValue:user forKey:user.suid];
 }
 
+//update the user profile
+- (void) updateCurrentUser : (UserDetailVO*) updatedUser{
+    
+    //update the user profile
+    [self.userDetailDAO updateUserProfile:updatedUser];
+    
+    //adding this user to the repository
+    [self.users setValue:updatedUser forKey:updatedUser.suid];
+}
+
+
+
 // Get and store the contacts into contactList.
 - (void)storeContactsWithAddressBook:(ABAddressBookRef )addressBook {
     

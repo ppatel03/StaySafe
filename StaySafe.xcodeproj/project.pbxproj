@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5F05747D1C13DE0A00BCFAE3 /* SafeWalkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F05747C1C13DE0A00BCFAE3 /* SafeWalkViewController.m */; settings = {ASSET_TAGS = (); }; };
+		5F30FA4A1C19264E0081EA58 /* UpdateProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F30FA491C19264E0081EA58 /* UpdateProfileViewController.m */; settings = {ASSET_TAGS = (); }; };
 		5F42C47F1C1571F1000BF96B /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F42C47E1C1571F1000BF96B /* AddressBook.framework */; };
 		5F42C4811C1571FA000BF96B /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F42C4801C1571FA000BF96B /* AddressBookUI.framework */; };
 		5F45E3E51C16EC6B008CAB28 /* RequestSafeWalkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F45E3E41C16EC6B008CAB28 /* RequestSafeWalkViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -60,6 +61,8 @@
 /* Begin PBXFileReference section */
 		5F05747B1C13DE0A00BCFAE3 /* SafeWalkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafeWalkViewController.h; sourceTree = "<group>"; };
 		5F05747C1C13DE0A00BCFAE3 /* SafeWalkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeWalkViewController.m; sourceTree = "<group>"; };
+		5F30FA481C19264E0081EA58 /* UpdateProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateProfileViewController.h; sourceTree = "<group>"; };
+		5F30FA491C19264E0081EA58 /* UpdateProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateProfileViewController.m; sourceTree = "<group>"; };
 		5F42C47E1C1571F1000BF96B /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		5F42C4801C1571FA000BF96B /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		5F45E3E31C16EC6B008CAB28 /* RequestSafeWalkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestSafeWalkViewController.h; sourceTree = "<group>"; };
@@ -209,6 +212,8 @@
 				5F45E3E41C16EC6B008CAB28 /* RequestSafeWalkViewController.m */,
 				5F5813661C18A121006BFD6A /* RegistrationViewController.h */,
 				5F5813671C18A121006BFD6A /* RegistrationViewController.m */,
+				5F30FA481C19264E0081EA58 /* UpdateProfileViewController.h */,
+				5F30FA491C19264E0081EA58 /* UpdateProfileViewController.m */,
 			);
 			path = StaySafe;
 			sourceTree = "<group>";
@@ -385,6 +390,7 @@
 				5F98D6B31C0E762D00FA770C /* Constants.m in Sources */,
 				5F45E3E51C16EC6B008CAB28 /* RequestSafeWalkViewController.m in Sources */,
 				5FF53BE01C0B151E0088A54B /* RepositoryModel.m in Sources */,
+				5F30FA4A1C19264E0081EA58 /* UpdateProfileViewController.m in Sources */,
 				5F98D6B91C0E981200FA770C /* UserDetailVO.m in Sources */,
 				5FB4347E1BFEB183005B1ED5 /* main.m in Sources */,
 				5FF53BDA1C0AFF060088A54B /* InitModel.m in Sources */,

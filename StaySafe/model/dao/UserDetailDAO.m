@@ -142,7 +142,17 @@
     NSString* query = [self.jsonModel getJSONQueryForLocationUpdate:user.suid lat:user.latitude long:user.longitude];
     
     //call the rest api to perform asynchronous insert operation
-    [self.restAPIDAO makeRESTAPIcallToUpdaterUserLocation:query table:USER_DETAILS_DB_NAME];
+    [self.restAPIDAO makeRESTAPIcallToUpdateUser:query table:USER_DETAILS_DB_NAME];
+}
+
+//  asynchronous update to user's profile
+- (void) updateUserProfile : (UserDetailVO*) user{
+    
+    //fetches the json Query required for the cluster point server
+    NSString* query = [self.jsonModel getJSONQueryForUserProfileUpdate:user.suid name:user.name email:user.email];
+    
+    //call the rest api to perform asynchronous insert operation
+    [self.restAPIDAO makeRESTAPIcallToUpdateUser:query table:USER_DETAILS_DB_NAME];
 }
 
 //  insert safewalk request data

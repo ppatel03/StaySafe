@@ -82,6 +82,9 @@
 //Default SMS text for user verfication
 #define DEFAULT_VERIFICATION_USERS_TEXT "Your verfication code is : "
 
+//Default SMS text for user profile update
+#define DEFAULT_UPDATION_USERS_TEXT "Your profile is successfully updated. "
+
 //default span for zoom
 #define THE_SPAN 0.02f;
 
