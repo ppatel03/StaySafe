@@ -36,6 +36,15 @@ UIColor *currentColor;
     //loading defaults
     [self loadDefault];
     
+    //adding background
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"light-blue-background-1"]];
+    //rounded corners
+    self.watchSafeWalkButton.layer.cornerRadius = 10; // this value vary as per your desire
+    self.watchSafeWalkButton.clipsToBounds = YES;
+    //rounded corners
+    self.safeWalkRequestTableView.layer.cornerRadius = 10; // this value vary as per your desire
+    self.safeWalkRequestTableView.clipsToBounds = YES;
+    
     //fetch and store safewalk related information
     [self.repository storeSafeWalkRelatedInformation];
     
@@ -263,17 +272,20 @@ UIColor *currentColor;
 -(void) showUpdatedLocationOfUserPeriodically  {
     NSString* requestedUserID = currentlyWatchedUser.suid;
     UserDetailVO* updatedRequestedUser = [self.repository getUserInDBFromUserID:requestedUserID];
-    //update the new currently watched user
-    currentlyWatchedUser = updatedRequestedUser;
-    //updating local dictionary
-    [safeWalkRequestUsersDict setObject:updatedRequestedUser forKey:requestedUserID];
-    // drawing lines for tracing the path of the user
-    [self showLines:updatedRequestedUser.coordinates];
-    //flag for to show dropping pin  animation
-    isAnnotationShowingUpFirstTime = NO;
-    //update the annotations on Mapview
-    [self addAnnotationForSafeWalkRequestedUsers];
+    if(updatedRequestedUser != nil){
+        //update the new currently watched user
+        currentlyWatchedUser = updatedRequestedUser;
+        //updating local dictionary
+        [safeWalkRequestUsersDict setObject:updatedRequestedUser forKey:requestedUserID];
+        // drawing lines for tracing the path of the user
+        [self showLines:updatedRequestedUser.coordinates];
+        //flag for to show dropping pin  animation
+        isAnnotationShowingUpFirstTime = NO;
+        //update the annotations on Mapview
+        [self addAnnotationForSafeWalkRequestedUsers];
+        
 
+    }
 }
 
 
@@ -328,13 +340,16 @@ UIColor *currentColor;
         pinView = [[MKPinAnnotationView alloc]
                     initWithAnnotation:annotation
                     reuseIdentifier:annotationIdentifier] ;
-        // create color
-        UIColor *color = [UIColor colorWithRed:10/255.0
-                                         green:200/255.0
-                                          blue:15/255.0
-                                         alpha:1];
-        
-        [pinView setPinTintColor:color];
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")) {
+            // create color
+            UIColor *color = [UIColor colorWithRed:10/255.0
+                                             green:200/255.0
+                                              blue:15/255.0
+                                             alpha:1];
+            
+            [pinView setPinTintColor:color];
+        }
+       
        
         pinView.animatesDrop = YES;
         pinView.canShowCallout = YES;
@@ -360,9 +375,12 @@ UIColor *currentColor;
     NSMutableArray* safeRequestedUserIdArray = self.repository.safeWalkRequestedToUsers[currentUserIdForSafeWalk];
     for (NSString* userId in safeRequestedUserIdArray) {
         UserDetailVO* requestedUser =self.repository.users[userId];
-        [self.safeWalkRequestUsersDict setObject:requestedUser  forKey:userId];
-        NSString* userCellText = [@[requestedUser.name,requestedUser.phone] componentsJoinedByString:@" - "];
-        [self.safeWalkUsers addObject:userCellText];
+        if (requestedUser != nil) {
+            [self.safeWalkRequestUsersDict setObject:requestedUser  forKey:userId];
+            NSString* userCellText = [@[requestedUser.name,requestedUser.phone] componentsJoinedByString:@" - "];
+            [self.safeWalkUsers addObject:userCellText];
+        }
+        
     }
 }
 

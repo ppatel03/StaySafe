@@ -18,7 +18,14 @@ NSString* const imagePath = @"../images/";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.    
+    // Do any additional setup after loading the view.
+    
+    //adding background
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"light-blue-background-1"]];
+
+    
+    //disable back button of registration page
+    [self.navigationItem setHidesBackButton:YES animated:YES];
    
 }
 

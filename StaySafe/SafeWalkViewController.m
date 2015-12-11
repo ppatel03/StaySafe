@@ -26,6 +26,25 @@ UserDetailVO* currentUser;
     //loading defaults
     [self loadDefault];
     
+    
+    //adding background
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"light-blue-background-1"]];
+    //rounded corners
+    self.safewalkRequestButton.layer.cornerRadius = 10; // this value vary as per your desire
+    self.safewalkRequestButton.clipsToBounds = YES;
+    //rounded corners
+    self.viewSafeWalkRequestButton.layer.cornerRadius = 10; // this value vary as per your desire
+    self.viewSafeWalkRequestButton.clipsToBounds = YES;
+    //rounded corners
+    self.contactTableViewButton.layer.cornerRadius = 10; // this value vary as per your desire
+    self.contactTableViewButton.clipsToBounds = YES;
+    //rounded corners
+    self.contactsTableView.layer.cornerRadius = 10; // this value vary as per your desire
+    self.contactsTableView.clipsToBounds = YES;
+    
+    //adding background
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"light-blue-background-1"]];
+    
     //load gps data
     [self loadGpsParams];
     
@@ -177,17 +196,19 @@ UserDetailVO* currentUser;
                 if (distanceBetweenCurrentAndRegisteredUser < MAX_NEARBY_DISTANCE)
                 {
                     //Store these nearby users in the dictionary
-                    [self.repository.nearbyUsers setObject:user forKey:user.suid];
+                    if (user != nil) {
+                        [self.repository.nearbyUsers setObject:user forKey:user.suid];
+                        //Show these users on the Map along with annotation
+                        nearbyUsersAnnotation = [[Annotation alloc]init];
+                        location.latitude = user.latitude;
+                        location.longitude = user.longitude;
+                        nearbyUsersAnnotation.coordinate = location;
+                        nearbyUsersAnnotation.title = user.name;
+                        nearbyUsersAnnotation.subtitle = [@"Student ID : " stringByAppendingString:user.suid];
+                        
+                        [nearbyUsersLocation addObject:nearbyUsersAnnotation];
+                    }
                     
-                    //Show these users on the Map along with annotation
-                    nearbyUsersAnnotation = [[Annotation alloc]init];
-                    location.latitude = user.latitude;
-                    location.longitude = user.longitude;
-                    nearbyUsersAnnotation.coordinate = location;
-                    nearbyUsersAnnotation.title = user.name;
-                    nearbyUsersAnnotation.subtitle = [@"Student ID : " stringByAppendingString:user.suid];
-                    
-                    [nearbyUsersLocation addObject:nearbyUsersAnnotation];
                 }
             }
             
@@ -231,7 +252,9 @@ UserDetailVO* currentUser;
                 if (distanceBetweenCurrentAndRegisteredUser < MAX_NEARBY_DISTANCE)
                 {
                     //Store these nearby users in the dictionary
-                    [self.repository.nearbyUsers setObject:user forKey:user.suid];
+                    if (user != nil) {
+                        [self.repository.nearbyUsers setObject:user forKey:user.suid];
+                    }
                 }
             }
             

@@ -40,6 +40,8 @@ UITableViewDelegate,CLLocationManagerDelegate>
 - (IBAction)onClickSafeWalkRequestButton:(id)sender;
 //handle to RequestSafeWalkViewController for passing the repository via seque
 @property (weak, nonatomic) RequestSafeWalkViewController  *requestSafeWalkViewController;
+//view the safe walk reuqests
+@property (weak, nonatomic) IBOutlet UIButton *viewSafeWalkRequestButton;
 
 
 @end

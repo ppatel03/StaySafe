@@ -20,6 +20,12 @@ int updateShakes;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //adding background
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"light-blue-background-1"]];
+    //rounded corners
+    self.updateButton.layer.cornerRadius = 10; // this value vary as per your desire
+    self.updateButton.clipsToBounds = YES;
+    
     //load already existing user details
     [self loadDefault];
 }
@@ -106,6 +112,11 @@ int updateShakes;
          updateDirection = updateDirection * -1;
          [self updateShake:theOneYouWannaShake];
      }];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    [theTextField resignFirstResponder];
+    return YES;
 }
 
 @end

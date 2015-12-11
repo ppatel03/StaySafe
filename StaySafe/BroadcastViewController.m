@@ -27,7 +27,13 @@ double latitude, longitude;
     [self loadDefault];
     
     //load gps data
-    [self loadGpsParams];    
+    [self loadGpsParams];
+    
+    //adding background
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"light-blue-background-1"]];
+    //rounded corners
+    self.broadcastAlertButton.layer.cornerRadius = 10; // this value vary as per your desire
+    self.broadcastAlertButton.clipsToBounds = YES;
    
     
 }
@@ -206,7 +212,10 @@ double latitude, longitude;
     [textView setText:@""];
 }
 
-
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    [theTextField resignFirstResponder];
+    return YES;
+}
 
 
 /*

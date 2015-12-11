@@ -25,6 +25,14 @@ bool isNewUser;
     //temporary logic to show registration page
    // [[NSUserDefaults standardUserDefaults] setPersistentDomain:[NSDictionary dictionary] forName:[[NSBundle mainBundle] bundleIdentifier]];
     
+    //adding background
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"light-blue-background-1"]];
+    //rounded corners
+    self.sendSMSButton.layer.cornerRadius = 10; // this value vary as per your desire
+    self.sendSMSButton.clipsToBounds = YES;
+    self.registerButton.layer.cornerRadius = 10; // this value vary as per your desire
+    self.registerButton.clipsToBounds = YES;
+    
     
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -103,6 +111,11 @@ bool isNewUser;
 - (IBAction)onClickRegisterButton:(id)sender {
     
     
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    [theTextField resignFirstResponder];
+    return YES;
 }
 
 

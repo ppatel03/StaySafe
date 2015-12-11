@@ -251,26 +251,30 @@
         for (int i=0; i < ABMultiValueGetCount(phones); i++) {
             CFStringRef currentPhoneLabel = ABMultiValueCopyLabelAtIndex(phones, i);
             CFStringRef currentPhoneValue = ABMultiValueCopyValueAtIndex(phones, i);
-            
-            if (CFStringCompare(currentPhoneLabel, kABPersonPhoneMobileLabel, 0) == kCFCompareEqualTo) {
-                [dOfPerson setObject:(__bridge NSString *)currentPhoneValue forKey:@"mobileNumber"];
-                NSString* numberString = dOfPerson[@"mobileNumber"];
-                numberString = [[numberString componentsSeparatedByCharactersInSet:
-                                 [[NSCharacterSet decimalDigitCharacterSet] invertedSet]] componentsJoinedByString:@""];
-                [dOfPerson setObject:numberString forKey:@"phone"];
-            }
-            
-            if (CFStringCompare(currentPhoneLabel, kABHomeLabel, 0) == kCFCompareEqualTo) {
-                [dOfPerson setObject:(__bridge NSString *)currentPhoneValue forKey:@"homeNumber"];
-                NSString* numberString = dOfPerson[@"homeNumber"];
-                numberString = [[numberString componentsSeparatedByCharactersInSet:
-                                 [[NSCharacterSet decimalDigitCharacterSet] invertedSet]] componentsJoinedByString:@""];
-                [dOfPerson setObject:numberString forKey:@"phone"];
+            NSLog(@"curentPhoneLabel:%@ amd currentPhoneValue:%@",currentPhoneLabel,currentPhoneValue);
+            if( currentPhoneLabel != NULL  && currentPhoneValue != NULL){
+                if (CFStringCompare(currentPhoneLabel, kABPersonPhoneMobileLabel, 0) == kCFCompareEqualTo) {
+                    [dOfPerson setObject:(__bridge NSString *)currentPhoneValue forKey:@"mobileNumber"];
+                    NSString* numberString = dOfPerson[@"mobileNumber"];
+                    numberString = [[numberString componentsSeparatedByCharactersInSet:
+                                     [[NSCharacterSet decimalDigitCharacterSet] invertedSet]] componentsJoinedByString:@""];
+                    [dOfPerson setObject:numberString forKey:@"phone"];
+                }
                 
+                if (CFStringCompare(currentPhoneLabel, kABHomeLabel, 0) == kCFCompareEqualTo) {
+                    [dOfPerson setObject:(__bridge NSString *)currentPhoneValue forKey:@"homeNumber"];
+                    NSString* numberString = dOfPerson[@"homeNumber"];
+                    numberString = [[numberString componentsSeparatedByCharactersInSet:
+                                     [[NSCharacterSet decimalDigitCharacterSet] invertedSet]] componentsJoinedByString:@""];
+                    [dOfPerson setObject:numberString forKey:@"phone"];
+                    
+                }
+                
+                CFRelease(currentPhoneLabel);
+                CFRelease(currentPhoneValue);
             }
             
-            CFRelease(currentPhoneLabel);
-            CFRelease(currentPhoneValue);
+           
         }
         CFRelease(phones);
         
