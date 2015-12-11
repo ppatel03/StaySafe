@@ -23,7 +23,7 @@ bool isNewUser;
 - (void)viewDidLoad {
     
     //temporary logic to show registration page
-   // [[NSUserDefaults standardUserDefaults] setPersistentDomain:[NSDictionary dictionary] forName:[[NSBundle mainBundle] bundleIdentifier]];
+    [[NSUserDefaults standardUserDefaults] setPersistentDomain:[NSDictionary dictionary] forName:[[NSBundle mainBundle] bundleIdentifier]];
     
     //adding background
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"light-blue-background-1"]];
@@ -103,7 +103,7 @@ bool isNewUser;
         //send SMS to user
         NSMutableDictionary* userDict = [NSMutableDictionary dictionary];
         [userDict setObject:user forKey:user.suid];
-        [self.repository sendSMSToUsers:userDict sms:[@DEFAULT_VERIFICATION_USERS_TEXT stringByAppendingString:rightCode]];
+        //[self.repository sendSMSToUsers:userDict sms:[@DEFAULT_VERIFICATION_USERS_TEXT stringByAppendingString:rightCode]];
     }
     
 }
