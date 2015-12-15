@@ -5,6 +5,9 @@
 //  Created by Prashant Mahesh Patel on 11/19/15.
 //  Copyright © 2015 Prashant Mahesh Patel. All rights reserved.
 //
+//  Contains the implementation of methods which are responsible to handle Home page events
+//
+
 @import CoreLocation;
 #import "IconPageViewController.h"
 

@@ -6,6 +6,10 @@
 //  Created by Prashant Mahesh Patel on 12/1/15.
 //  Copyright © 2015 Prashant Mahesh Patel. All rights reserved.
 //
+//
+//  Implementation file for Data Access Object Design Pattern - provides data access to the repository model by preparing the query with the help of
+//  JSONQueryModel and interacting with RESTApiDAO to make Rest api call
+//
 
 #import "UserDetailDAO.h"
 

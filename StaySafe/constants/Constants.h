@@ -5,6 +5,7 @@
 //  Created by Prashant Mahesh Patel on 12/1/15.
 //  Copyright © 2015 Prashant Mahesh Patel. All rights reserved.
 //
+//  contains all necessary constants which can be accessed globally
 
 #import <Foundation/Foundation.h>
 

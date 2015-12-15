@@ -1,10 +1,12 @@
 //
-//  RESTApiDAO.h - contains the declaration for the methods which provides the REST API call to cluster point database
-//  - https://cloud-us.clusterpoint.com
+//  RESTApiDAO.h 
 //  StaySafe
 //
 //  Created by Prashant Mahesh Patel on 12/1/15.
 //  Copyright © 2015 Prashant Mahesh Patel. All rights reserved.
+//
+//  contains declaration of methods reponsible for the query the servers through REST APIs
+//  Two APIs are used :- SMS API : textbelt.com/ and Database API : https://cloud-us.clusterpoint.com/
 //
 
 #import <Foundation/Foundation.h>

@@ -5,6 +5,8 @@
 //  Created by Prashant Mahesh Patel on 11/25/15.
 //  Copyright © 2015 Prashant Mahesh Patel. All rights reserved.
 //
+//  Declaration file responsible for holding Annotation Data for Goolge Maps
+//
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>

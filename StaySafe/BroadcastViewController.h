@@ -5,6 +5,9 @@
 //  Created by Prashant Mahesh Patel on 11/24/15.
 //  Copyright © 2015 Prashant Mahesh Patel. All rights reserved.
 //
+//  contains the declaration of methods which alerts the app users via SMS within 5 mile radius
+//
+
 #import <UIKit/UIKit.h>
 #import "model/RepositoryModel.h"
 #import "Annotation.h"

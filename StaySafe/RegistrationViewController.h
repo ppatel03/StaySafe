@@ -5,6 +5,8 @@
 //  Created by Prashant Mahesh Patel on 12/9/15.
 //  Copyright © 2015 Prashant Mahesh Patel. All rights reserved.
 //
+//  contains the declaration of methods for registration
+//
 
 #import <UIKit/UIKit.h>
 #import "model/RepositoryModel.h"

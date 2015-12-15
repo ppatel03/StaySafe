@@ -5,6 +5,8 @@
 //  Created by Prashant Mahesh Patel on 12/8/15.
 //  Copyright © 2015 Prashant Mahesh Patel. All rights reserved.
 //
+//  contains declaration of methods for implementing Watch Safe Walk utility by tracking the requested user on Map
+//
 
 #import <UIKit/UIKit.h>
 #import "RepositoryModel.h"

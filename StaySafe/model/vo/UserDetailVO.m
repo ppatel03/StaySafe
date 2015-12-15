@@ -5,6 +5,8 @@
 //  Created by Prashant Mahesh Patel on 12/1/15.
 //  Copyright © 2015 Prashant Mahesh Patel. All rights reserved.
 //
+//  Value Object : holds the the app user data
+
 
 #import "UserDetailVO.h"
 

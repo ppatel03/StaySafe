@@ -5,6 +5,10 @@
 //  Created by Prashant Mahesh Patel on 11/19/15.
 //  Copyright © 2015 Prashant Mahesh Patel. All rights reserved.
 //
+//  Contains the declaration of methods which are responsible to handle Home page events
+//
+
+
 #import <UIKit/UIKit.h>
 #import "model/RepositoryModel.h"
 #import "BroadcastViewController.h"

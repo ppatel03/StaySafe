@@ -5,7 +5,7 @@
 //  Created by Prashant Mahesh Patel on 11/29/15.
 //  Copyright © 2015 Prashant Mahesh Patel. All rights reserved.
 //
-// It contains the declaration of methods  querying the data layer and storing the required data
+// It contains the implementation of methods  querying the data layer and storing the required data
 // to map the business entities
 //
 // Also comntains the logic of adding the contact the numbers to the contact list - taken from

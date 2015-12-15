@@ -5,6 +5,8 @@
 //  Created by Prashant Mahesh Patel on 12/5/15.
 //  Copyright © 2015 Prashant Mahesh Patel. All rights reserved.
 //
+//  contains the declaration of methods for implementing SAFE WALK functionality. Displays the nearby contacts sorted according to distance
+//
 
 #import <UIKit/UIKit.h>
 #import "RepositoryModel.h"
